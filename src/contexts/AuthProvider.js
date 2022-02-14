@@ -4,32 +4,32 @@ import { useNavigate } from "react-router-dom"
 const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({})
+//   const [user, setUser] = useState({})
   const [token, setToken] = useState({})
 
   const navigate = useNavigate()
 
-  const setUserInfo = (user,token) => {
-    localStorage.setItem("user", JSON.stringify(user))
+  const setUserInfo = (token) => {
+    // localStorage.setItem("user", JSON.stringify(user))
     localStorage.setItem("token", JSON.stringify(token))
-    setUser(user)
+    // setUser(user)
     navigate("/dashboard")
   }
 
   const logout = () => {
     localStorage.removeItem("user")
     localStorage.removeItem("token")
-    setUser({})
+    // setUser({})
     setToken({})
     navigate("/home")
   }
 
   useEffect(() => {
-    const oldUser = localStorage.getItem("user")
+    // const oldUser = localStorage.getItem("user")
     const oldUser_token = localStorage.getItem("token")
-    if (oldUser && oldUser_token) {
+    if (oldUser_token) {
       navigate("/dashboard")
-      setUser(JSON.parse(oldUser))
+    //   setUser(JSON.parse(oldUser))
       setToken(JSON.parse(oldUser_token))
     } else {
       // navigate("/login")
@@ -38,7 +38,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, token, setUserInfo, logout }}>
+    <AuthContext.Provider value={{token, setUserInfo, logout }}>
       {children}
     </AuthContext.Provider>
   )
