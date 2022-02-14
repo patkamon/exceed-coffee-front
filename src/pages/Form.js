@@ -9,23 +9,19 @@ const Form = () => {
       const data = getObjForm(e.target)
       console.log(data)
 
+      // wating for backend
+      // login(data)
+      // .then((data) => {
+      // setUserInfo(data.token)
+      // })
+
     
   }
-
-
-
-
 
   return (
     <div>Form
 
-
-
-    
-
       <form onSubmit={handleSubmit}>
-   
-     
         <input className='customer-name' name='name' placeholder='name' ></input><br/>
         <input className='phone-number' name='tel' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/> 
         <label className='label-num-seat' for='seat'>num.seat</label>
