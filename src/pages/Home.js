@@ -38,8 +38,8 @@ const Home = () => {
       <div className='container'>
         <h1>Starbook Shop</h1><br/>
 
-        {seat.current}/{seat.limit}<br/>
-        39/40<br/> 
+        {/* {seat.current}/{seat.limit}<br/>
+        39/40<br/>  */}
 
 
         <p> available seat: 1<br/>
@@ -47,16 +47,15 @@ const Home = () => {
         waiting queue: 2 </p><br/>
         <div className='wall'></div>
         
-
-        <a href="/form" class="cta">
-          <span>Booking</span>
-          <svg width="13px" height="10px" viewBox="0 0 13 10">
-            <path d="M1,5 L11,5"></path>
-            <polyline points="8 1 12 5 8 9"></polyline>
-          </svg>
-        </a>
-
-
+        <div className='button'>
+        <a href="#" class="cta">
+  <span>Click me</span>
+  <svg width="13px" height="10px" viewBox="0 0 13 10">
+    <path d="M1,5 L11,5"></path>
+    <polyline points="8 1 12 5 8 9"></polyline>
+  </svg>
+</a>
+</div>
 
       </div>
 
