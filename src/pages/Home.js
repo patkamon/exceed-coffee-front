@@ -8,10 +8,11 @@ import './style/Home.css'
 const Home = () => {
 
   const [seat,setSeat] = useState({})
-  
+
+
   useEffect(() => {
 
-    const interval = setInterval(() => {
+    const checkQ = setInterval(() => {
       console.log('10sec passed');
       // checkQueue(queue).then((data) => {
       //   console.log(data)
@@ -19,9 +20,14 @@ const Home = () => {
         //   setError(resError.response.data)
             //  queueLogout()
         // })
-  
-  
     }, 10000);
+    
+    const adminAutoLogout = setInterval(() => {
+      console.log('1min passed');
+      if (localStorage.getItem("token") != null){
+        localStorage.removeItem("token")
+      }
+    }, 60000);
   
   
   }, [])
@@ -48,7 +54,7 @@ const Home = () => {
         <div className='wall'></div>
         
         <div className='button'>
-        <a href="#" class="cta">
+        <a href="#" className="cta">
   <span>Click me</span>
   <svg width="13px" height="10px" viewBox="0 0 13 10">
     <path d="M1,5 L11,5"></path>

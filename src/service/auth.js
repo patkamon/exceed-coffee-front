@@ -1,7 +1,6 @@
 import axios from "axios"
 
 export async function adminLogin(obj) {
-
   // change format from json object to x-www-urlencoded
   var data = [];
   for (var key in obj) {
@@ -11,7 +10,7 @@ export async function adminLogin(obj) {
      }
     }
   data= data.join("&");
-  const res = await axios.post("here", data)
+  const res = await axios.post("https://ecourse.cpe.ku.ac.th/exceed01/api/token", data)
   return res.data
 }
 

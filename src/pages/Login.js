@@ -16,7 +16,8 @@ const Login = () => {
         // wating for backend
         adminLogin(data)
       .then((data) => {
-        setAdminInfo(data.token)
+        console.log(data)
+        setAdminInfo(data.access_token)
       })
     }
 
@@ -24,10 +25,6 @@ const Login = () => {
   return (
 
     <div>
-
-
-
-
 
       <div className='container'>
         <h1>STARBOOK</h1>
@@ -38,11 +35,13 @@ const Login = () => {
         <div className= 'lefty'>
           <form onSubmit={handleSubmit}>
       
-            <input name="username" type='text' placeholder="username" class="signup-text"/>
+            <input name="username" type='text' placeholder="username" className="signup-text"/>
             <br/>
               
-            <input name="password" placeholder="password" type="password" class="signup-text-input" />
+            <input name="password" placeholder="password" type="password" className="signup-text-input" />
             <br/>
+
+            <button type="submit" hidden />
 
           </form>
         </div>
