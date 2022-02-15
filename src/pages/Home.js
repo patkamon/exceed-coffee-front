@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 
+import './style/Home.css'
+
+
 const Home = () => {
 
   const [seat,setSeat] = useState({})
@@ -27,6 +30,8 @@ const Home = () => {
 
   return (
     <div>
+
+      
 
       Starbook Shop<br/>
 
