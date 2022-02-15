@@ -1,8 +1,15 @@
-import axios from 'axios'
+import axios from "axios"
 
-async function getEstimateTime() {
-  const res = await axios.get(
-    `https://ecourse.cpe.ku.ac.th/exceed01/api/get_time`
-  )
-  return res.data
+//waitfor backend
+export async function checkQueueExist(queue) {
+    // check that queue still exist
+    const res = await axios.post("here", queue)
+    return res.data
+  }
+  
+export async function checkCurrentQueue(queue) {
+    // check what is current queue
+    const res = await axios
+    .post("here", queue)
+    return res.data
 }
