@@ -24,6 +24,10 @@ const Login = () => {
 
     <div>
 
+
+
+
+
       <div className='container'>
         <h1>STARBOOK</h1>
         <h1>SHOP</h1>
@@ -38,7 +42,6 @@ const Login = () => {
               
             <input name="password" placeholder="password" type="password" class="signup-text-input" />
             <br/>
-    
 
           </form>
         </div>
