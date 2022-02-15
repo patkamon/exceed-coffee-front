@@ -1,11 +1,11 @@
 import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
-import { login } from '../service/auth'
+import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
 
 const Login = () => {
 
-    const { setUserInfo } = useAuth()
+    const { setAdminInfo } = useAuth()
 
     function handleSubmit(e) {
         e.preventDefault()
@@ -13,9 +13,9 @@ const Login = () => {
         console.log(data)
 
         // wating for backend
-        login(data)
+        adminLogin(data)
       .then((data) => {
-        setUserInfo(data.token)
+        setAdminInfo(data.token)
       })
     }
 

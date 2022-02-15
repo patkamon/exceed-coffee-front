@@ -1,8 +1,11 @@
 import React from 'react'
+import { useAuth } from '../contexts/AuthProvider'
+import { queueLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
 
 const Form = () => {
 
+  const { setQueueInfo } = useAuth()
 
   function handleSubmit(e) {
       e.preventDefault()
@@ -10,9 +13,9 @@ const Form = () => {
       console.log(data)
 
       // wating for backend
-      // login(data)
+      // queueLogin(data)
       // .then((data) => {
-      // setUserInfo(data.token)
+      // setQueueInfo(data.queue)
       // })
 
     
