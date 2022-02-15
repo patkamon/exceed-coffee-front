@@ -40,6 +40,15 @@ h1 {
   background-color: #925338;
 }
 
+p {
+  color: #72402b;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 130%;
+  text-align: left;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
 a {
   text-decoration: none;
   color: inherit;

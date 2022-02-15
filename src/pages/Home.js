@@ -41,14 +41,14 @@ const Home = () => {
         39/40<br/> 
 
 
-        available seat: 1<br/>
+        <p> available seat: 1<br/>
         previous queue: 3<br/>
-        waiting queue: 2<br/>
+        waiting queue: 2 </p><br/>
         <div className='wall'></div>
         
 
-                <a href="#" class="cta">
-          <span>Click me</span>
+        <a href="#" class="cta">
+          <span>Booking</span>
           <svg width="13px" height="10px" viewBox="0 0 13 10">
             <path d="M1,5 L11,5"></path>
             <polyline points="8 1 12 5 8 9"></polyline>
