@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import './style/Home.css'
 
 
+
 const Home = () => {
 
   const [seat,setSeat] = useState({})
@@ -30,21 +31,35 @@ const Home = () => {
 
   return (
     <div>
+        
+    
+      
+      <div className='container'>
+        <h1>Starbook Shop</h1><br/>
+
+        {seat.current}/{seat.limit}<br/>
+        39/40<br/> 
+
+
+        available seat: 1<br/>
+        previous queue: 3<br/>
+        waiting queue: 2<br/>
+        <div className='wall'></div>
+        
+
+                <a href="#" class="cta">
+          <span>Click me</span>
+          <svg width="13px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </a>
+
+
+
+      </div>
 
       
-
-      Starbook Shop<br/>
-
-      {seat.current}/{seat.limit}<br/>
-      39/40<br/> 
-
-
-      available seat: 1<br/>
-      previous queue: 3<br/>
-      waiting queue: 2<br/>
-      
-
-
 
     </div>
   )
