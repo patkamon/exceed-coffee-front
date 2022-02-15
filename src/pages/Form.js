@@ -20,7 +20,6 @@ const Form = () => {
       // setQueueInfo(data.queue)
       // })
 
-    
   }
 
   return (
