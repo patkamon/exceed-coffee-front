@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600;700&family=Roboto+Slab:wght@600;700&family=Rowdies:wght@300;400;700&display=swap');
+
+.signup-text-input{
+  /* text-indent: -30%; */
+  background-color: #005d32;
+  padding: 10px;
+  border: 2px solid rgb(20, 73, 20);
+  padding:10px;
+  border-radius:10px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  width:20%;
+  height: 15%;
+  font-family:inherit;
+  font-size: inherit;
+  color: rgb(255, 255, 255);
+  float: left;
+  text-indent: -60%;
+}
+  .signup-text{
+    /* text-indent: -30%; */
+    background-color: #005d32;
+    padding: 10px;
+    border: 2px solid #eee;
+    padding:10px;
+    border-radius:10px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    width:20%;
+    height: 15%;
+    font-family:inherit;
+    font-size: inherit;
+    color: rgb(255, 255, 255);
+    float: left;
+}
+
+h1{
+  color: #925338;
+  font-size: 700%;
+  font-family: 'Nunito Sans', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 8px;
+  text-align: left;
+  line-height: 60px;
+  text-indent: 150px;
+}
+
+h2{
+  color: #925338;
+  font-size: 100%;
+  font-family: 'Nunito Sans', sans-serif;
+  text-shadow: 2px 2px 4px #000000;
+  letter-spacing: 10px;
+  text-indent: -60%;
+}
+
+.wall {
+  margin: 15px auto 50px auto;
+
+  width: 600px;
+  height: 2px;
+  background-color: #925338;
+}
+
+.lefty{
+  float: left;
+  text-indent: 150px;
+}
+
