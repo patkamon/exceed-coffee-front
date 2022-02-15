@@ -2,7 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
-import './style/Login.css'
+import './style/login.css'
 
 const Login = () => {
 
