@@ -3,6 +3,8 @@ import { useAuth } from '../contexts/AuthProvider'
 import { queueLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
 
+import './style/Form.css'
+
 const Form = () => {
 
   const { setQueueInfo } = useAuth()
@@ -22,15 +24,17 @@ const Form = () => {
   }
 
   return (
-    <div>Form
+    <div className='container'>
+      <h1>Starbook Shop</h1><br />
 
       <form onSubmit={handleSubmit}>
-        <input className='customer-name' name='name' placeholder='name' ></input><br/>
-        <input className='phone-number' name='tel' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/> 
-        <label className='label-num-seat' for='seat'>num.seat</label>
+        <input className='customer-name' name='name' placeholder='Name' ></input><br/>
+        <input className='phone-number' name='tel' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
+        <label className='label-num-seat' for='seat'>number of seat</label><br />
 
         <input className='num-seat' name='num-seat'  type="number" min="1" max="8" required></input>
         <button className='submit-btn' type='submit'>Submit</button>
+
       </form>
 
 
