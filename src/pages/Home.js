@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import './style/Home.css'
 
@@ -47,7 +48,7 @@ const Home = () => {
         <div className='wall'></div>
         
 
-        <a href="#" class="cta">
+        <a href="/form" class="cta">
           <span>Booking</span>
           <svg width="13px" height="10px" viewBox="0 0 13 10">
             <path d="M1,5 L11,5"></path>
