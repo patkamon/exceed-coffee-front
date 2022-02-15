@@ -8,21 +8,6 @@ const Queue = () => {
   const [currentQ, setCurrentQ] = useState()
 
 
-//waitfor backend
-async function checkQueueExits(queue) {
-  // check that queue still exist
-  const res = await axios.post("here", queue)
-  return res.data
-}
-
-async function checkCurrentQueue(queue) {
-  // check what is current queue
-  const res = await axios.post("here", queue)
-  return res.data
-}
-
-
-
 useEffect(() => {
 
   const interval = setInterval(() => {
@@ -33,6 +18,7 @@ useEffect(() => {
       //   setError(resError.response.data)
           //  queueLogout()
       // })
+
 
   }, 10000);
 
