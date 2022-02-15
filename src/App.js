@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/form" element={<Form />} />
-          <Route path="/queue:phone_number" element={<Queue />}/>
+          <Route path="/queue" element={<Queue />}/>
 
           <Route path="*" element={<Navigate to="home" />} />
         </Routes>

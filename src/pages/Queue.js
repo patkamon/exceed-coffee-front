@@ -1,8 +1,58 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect, useState } from 'react'
+import { useAuth } from '../contexts/AuthProvider'
 
 const Queue = () => {
+
+  const { queue, queueLogout } = useAuth()
+  const [currentQ, setCurrentQ] = useState()
+
+
+//waitfor backend
+async function checkQueueExits(queue) {
+  // check that queue still exist
+  const res = await axios.post("here", queue)
+  return res.data
+}
+
+async function checkCurrentQueue(queue) {
+  // check what is current queue
+  const res = await axios.post("here", queue)
+  return res.data
+}
+
+
+
+useEffect(() => {
+
+  const interval = setInterval(() => {
+    console.log('10sec passed');
+    // checkQueue(queue).then((data) => {
+    //   console.log(data)
+    // }).catch((resError) => {
+      //   setError(resError.response.data)
+          //  queueLogout()
+      // })
+
+  }, 10000);
+
+
+}, [])
+
+
+
+
   return (
-    <div>Queue</div>
+    <div>Queue
+
+
+      No. 3 { queue[0] } <br/>
+      ... queue ahead.
+      status: pending.
+
+
+
+    </div>
   )
 }
 
