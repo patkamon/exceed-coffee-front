@@ -1,12 +1,14 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { createContext, useContext, useEffect, useState } from "react"
+import { useNavigate, useLocation } from "react-router-dom"
 
 const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-  //   const [user, setUser] = useState({})
-  const [token, setToken] = useState({})
+
+//   const [user, setUser] = useState({})
+  const [token, setToken] = useState()
   const [queue, setQueue] = useState({})
+  const location = useLocation()
 
   const navigate = useNavigate()
 
@@ -22,14 +24,14 @@ const AuthProvider = ({ children }) => {
     // localStorage.removeItem("user")
     localStorage.removeItem('token')
     // setUser({})
-    setToken({})
-    navigate('/home')
+
+    setToken()
+    navigate("/home")
   }
 
-  const setQueueInfo = (queue) => {
-    // localStorage.setItem("user", JSON.stringify(user))
-    localStorage.setItem('queue', JSON.stringify(queue))
-    setQueue(queue)
+  const setQueueInfo = (tel) => {
+    localStorage.setItem("tel", JSON.stringify(tel))
+    setQueue(tel)
     // setUser(user)
     navigate('/queue')
   }
@@ -38,24 +40,28 @@ const AuthProvider = ({ children }) => {
     // localStorage.removeItem("user")
     localStorage.removeItem('queue')
     // setUser({})
-    setQueue({})
-    navigate('/home')
+    setQueue()
+    navigate("/home")
   }
 
   useEffect(() => {
     // const oldUser = localStorage.getItem("user")
-    const oldAdmin = localStorage.getItem('token')
-    const oldQueue = localStorage.getItem('queue')
-    // if (oldAdmin) {
-    //   navigate("/dashboard")
-    // //   setUser(JSON.parse(oldUser))
-    //   setToken(JSON.parse(oldAdmin))
-    // } else if (oldQueue) {
-    //   navigate("/queue")
-    //   setToken(JSON.parse(oldQueue))
-    // } else {
-    //   // navigate("/login")
-    // }
+
+    const oldAdmin = localStorage.getItem("token")
+    const oldQueue = localStorage.getItem("queue")
+    if (oldAdmin !== null) {
+    //   setUser(JSON.parse(oldUser))
+      setToken(JSON.parse(oldAdmin))
+      if (location.pathname.toString() === '/login'){
+        console.log('already login')
+        navigate("/dashboard")
+      }
+    } else if (oldQueue) {
+      setToken(JSON.parse(oldQueue))
+    } else if (oldAdmin === null && location.pathname.toString() === '/dashboard') {
+      console.log('im hacker')
+      navigate("/home")
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 

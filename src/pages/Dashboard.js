@@ -2,8 +2,24 @@ import { useState, useEffect } from 'react'
 import TodoItem from '../components/TodoItem'
 import EditForm from '../components/EditForm'
 import AddTodoForm from '../components/AddTodoForm'
+import { useAuth } from '../contexts/AuthProvider'
+import { Navigate } from 'react-router-dom'
 
 const Dashboard = () => {
+
+  const { token } = useAuth()
+
+  // useEffect(() => {
+  //   console.log(token)
+  //   if (token) {
+  //     console.log("you have token")
+  //   }else{
+  //     console.log(token,'here')
+  //     adminLogout();
+  //   }
+  // },[])
+
+
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos')
 

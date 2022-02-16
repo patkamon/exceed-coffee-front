@@ -5,11 +5,19 @@ export async function checkQueueExist(queue) {
     // check that queue still exist
     const res = await axios.post("here", queue)
     return res.data
-  }
+}
   
-export async function checkCurrentQueue(queue) {
+export async function checkCurrentQueue() {
     // check what is current queue
     const res = await axios
-    .post("here", queue)
+    .get("https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/countqueue")
     return res.data
+}
+
+
+export async function checkCurrentPPL() {
+  // check current amount of ppl in cafe
+  const res = await axios
+  .get("https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/get_number_sit")
+  return res.data
 }
