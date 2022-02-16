@@ -11,7 +11,7 @@ const AddTodoForm = ({
 }) => {
   console.log(todo)
   return (
-    <div>
+    <div className='add-todo-form'>
       <form onSubmit={onAddFormSubmit}>
         <input
           type="text"

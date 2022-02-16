@@ -5,6 +5,7 @@ import { BiDetail } from 'react-icons/bi'
 const TodoItem = ({ todo, onEditClick, onDeleteClick }) => {
   const [show, setShow] = useState(false)
   return (
+    <div className='todo-item'>
     <li key={todo.id}>
       {todo.text}{' '}
       <button onClick={() => onEditClick(todo)}>
@@ -24,6 +25,7 @@ const TodoItem = ({ todo, onEditClick, onDeleteClick }) => {
         </div>
       ) : null}
     </li>
+    </div>
   )
 }
 

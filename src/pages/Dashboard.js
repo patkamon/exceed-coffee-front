@@ -5,6 +5,9 @@ import AddTodoForm from '../components/AddTodoForm'
 import { useAuth } from '../contexts/AuthProvider'
 import { Navigate } from 'react-router-dom'
 
+import "./style/Dashboard.css"
+
+
 const Dashboard = () => {
 
   const { token } = useAuth()
@@ -112,8 +115,9 @@ const Dashboard = () => {
   console.log('todos is ', todos)
 
   return (
-    <div className="Dashboard">
-      <h1>SHOWQUEUE</h1>
+    <div className="dashboard">
+
+      <h1>QUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
         ดึงข้อมูลเริ่มต้นจาก database มาใช้
@@ -148,6 +152,7 @@ const Dashboard = () => {
           />
         ))}
       </ul>
+
     </div>
   )
 }

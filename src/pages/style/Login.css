@@ -72,13 +72,6 @@ h2 {
   overflow: hidden;
 }
 
-body {
-  background-image: url("./img/background-1.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
 .container {
   margin-top: 15%;
   margin-left: 12%;

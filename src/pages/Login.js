@@ -22,7 +22,7 @@ const Login = () => {
 
   return (
 
-    <div>
+    <div className='login'>
 
       <div className='container'>
         <h1>STARBOOK</h1>

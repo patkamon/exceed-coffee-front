@@ -1,0 +1,9 @@
+ul {
+  padding-bottom: 100%;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

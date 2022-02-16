@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-body {
+.home {
   background-image: url("./img/background-1.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
