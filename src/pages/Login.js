@@ -11,12 +11,10 @@ const Login = () => {
     function handleSubmit(e) {
         e.preventDefault()
         const data = getObjForm(e.target)
-        console.log(data)
 
         // wating for backend
         adminLogin(data)
       .then((data) => {
-        console.log(data)
         setAdminInfo(data.access_token)
       })
     }
