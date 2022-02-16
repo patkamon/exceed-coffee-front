@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
+import './style/Login.css'
 
 const Login = () => {
 
@@ -15,30 +16,38 @@ const Login = () => {
         // wating for backend
         adminLogin(data)
       .then((data) => {
-        setAdminInfo(data.token)
+        console.log(data)
+        setAdminInfo(data.access_token)
       })
     }
+
 
   return (
 
     <div>
 
-        <h1>Login</h1>
+      <div className='container'>
+        <h1>STARBOOK</h1>
+        <h1>SHOP</h1>
+        <div className='wall'></div>
+        <br/>
+        <br/>
+        <div className= 'lefty'>
+          <form onSubmit={handleSubmit}>
+      
+            <input name="username" type='text' placeholder="username" className="signup-text"/>
+            <br/>
+              
+            <input name="password" placeholder="password" type="password" className="signup-text-input" />
+            <br/>
 
-        <form onSubmit={handleSubmit}>
-   
-            <input name="username" placeholder="username" />
-            <input name="password" placeholder="password" type="password" />
-           <br/>
-           <button className='submit-btn' type='submit'>Submit</button>
+            <button type="submit" hidden />
 
-        </form>
+          </form>
+        </div>
+      </div>
 
     </div>
-
-
-
-
 
 
   )

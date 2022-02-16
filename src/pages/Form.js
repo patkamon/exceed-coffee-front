@@ -5,6 +5,7 @@ import { getObjForm } from '../utils/form'
 
 import './style/Form.css'
 
+
 const Form = () => {
 
   const { setQueueInfo } = useAuth()
@@ -23,9 +24,11 @@ const Form = () => {
   }
 
   return (
+
     <div className='container'>
       <h1>Starbook Shop</h1><br />
       <div className='wall'></div>
+
       <form onSubmit={handleSubmit}>
 
 

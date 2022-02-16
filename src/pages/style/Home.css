@@ -1,6 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+  overflow: hidden;
+}
+
 body {
   background-image: url("./img/background-1.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+.container {
+  margin-top: 15%;
+  margin-left: 12%;
+  width: 300px;
+  height: 700px;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #925338;
+  font-size: 500%;
+  font-family: "Nunito Sans", sans-serif;
+  text-shadow: 4px 4px #997966;
+  letter-spacing: 8px;
+  text-align: left;
+  line-height: 100px;
+}
+
+.wall {
+  margin: 15px auto 10px auto;
+  width: 500px;
+  height: 2px;
+  margin-left: 0;
+  background-color: #925338;
+}
+
+p {
+  color: #72402b;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 130%;
+  text-align: left;
+  line-height: 24px;
+  margin-left: 10px;
+}
+
+.button {
+  margin-top: 40px;
+  margin-left: -80px;
+  overflow: visible;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all 0.2s ease;
+}
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: #005d32;
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  color: white;
+}
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  background: #005d32;
+}
+.cta:hover svg {
+  transform: translateX(0);
+}
+.cta:active {
+  transform: scale(0.96);
 }

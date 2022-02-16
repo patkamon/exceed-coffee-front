@@ -8,10 +8,11 @@ import Queue from './pages/Queue';
 import Form from './pages/Form';
 import AuthProvider from './contexts/AuthProvider';
 
+
 function App() {
   return (
     <div className="App">
-      
+     
       <AuthProvider>
         <Routes>
           <Route path="/home" element={<Home />} />
@@ -26,7 +27,7 @@ function App() {
 
 
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
