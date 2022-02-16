@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
+
 //   const [user, setUser] = useState({})
   const [token, setToken] = useState()
   const [queue, setQueue] = useState({})
@@ -13,16 +14,17 @@ const AuthProvider = ({ children }) => {
 
   const setAdminInfo = (token) => {
     // localStorage.setItem("user", JSON.stringify(user))
-    localStorage.setItem("token", JSON.stringify(token))
+    localStorage.setItem('token', JSON.stringify(token))
     setToken(token)
     // setUser(user)
-    navigate("/dashboard")
+    navigate('/dashboard')
   }
 
   const adminLogout = () => {
     // localStorage.removeItem("user")
-    localStorage.removeItem("token")
+    localStorage.removeItem('token')
     // setUser({})
+
     setToken()
     navigate("/home")
   }
@@ -31,20 +33,20 @@ const AuthProvider = ({ children }) => {
     localStorage.setItem("tel", JSON.stringify(tel))
     setQueue(tel)
     // setUser(user)
-    navigate("/queue")
+    navigate('/queue')
   }
 
   const queueLogout = () => {
     // localStorage.removeItem("user")
-    localStorage.removeItem("queue")
+    localStorage.removeItem('queue')
     // setUser({})
     setQueue()
     navigate("/home")
   }
 
-
   useEffect(() => {
     // const oldUser = localStorage.getItem("user")
+
     const oldAdmin = localStorage.getItem("token")
     const oldQueue = localStorage.getItem("queue")
     if (oldAdmin !== null) {
@@ -64,7 +66,16 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   return (
-    <AuthContext.Provider value={{queue, token, setAdminInfo, setQueueInfo, adminLogout, queueLogout }}>
+    <AuthContext.Provider
+      value={{
+        queue,
+        token,
+        setAdminInfo,
+        setQueueInfo,
+        adminLogout,
+        queueLogout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   )
