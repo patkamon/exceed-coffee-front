@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { checkCurrentPPL, checkCurrentQueue } from '../service/queue'
 
 import './style/Home.css'
 
@@ -8,20 +9,34 @@ import './style/Home.css'
 const Home = () => {
 
   const [seat,setSeat] = useState({})
+  const [queueDetail , setQueueDetail] = useState({})
+  const [pplDetail, setPPLDetail] = useState({})
+
 
 
   useEffect(() => {
 
+    //first load
+    checkCurrentQueue().then((data) => {
+      setQueueDetail(data)
+    })
+    checkCurrentPPL().then((data) => {
+      setPPLDetail(data)
+    })
+
+    // do every 10sec
     const checkQ = setInterval(() => {
       console.log('10sec passed');
-      // checkQueue(queue).then((data) => {
-      //   console.log(data)
-      // }).catch((resError) => {
-        //   setError(resError.response.data)
-            //  queueLogout()
-        // })
+      checkCurrentQueue().then((data) => {
+        setQueueDetail(data)
+      })
+      // check current amount of ppl in cafe
+      checkCurrentPPL().then((data) => {
+        setPPLDetail(data)
+      })
     }, 10000);
-    
+
+    // auto logout for admin in 1 min
     const adminAutoLogout = setInterval(() => {
       console.log('1min passed');
       if (localStorage.getItem("token") != null){
@@ -45,9 +60,9 @@ const Home = () => {
         39/40<br/>  */}
 
 
-        <p> available seat: 1<br/>
-        previous queue: 3<br/>
-        waiting queue: 2 </p><br/>
+        <p> available seats: {pplDetail.all_sit - pplDetail.now_sit}/{pplDetail.all_sit}<br/>
+        current queue: {queueDetail.now_queue}<br/>
+        waiting queue(s): {queueDetail.wait_queue} </p><br/>
         <div className='wall'></div>
         
         <div className='button'>
