@@ -27,10 +27,9 @@ const AuthProvider = ({ children }) => {
     navigate("/home")
   }
 
-  const setQueueInfo = (queue) => {
-    // localStorage.setItem("user", JSON.stringify(user))
-    localStorage.setItem("queue", JSON.stringify(queue))
-    setQueue(queue)
+  const setQueueInfo = (tel) => {
+    localStorage.setItem("tel", JSON.stringify(tel))
+    setQueue(tel)
     // setUser(user)
     navigate("/queue")
   }
