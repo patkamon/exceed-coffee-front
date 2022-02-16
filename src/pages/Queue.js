@@ -2,6 +2,8 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 
+import './style/Queue.css'
+
 const Queue = () => {
 
   const { queue, queueLogout } = useAuth()
@@ -29,14 +31,22 @@ useEffect(() => {
 
 
   return (
-    <div>Queue
+    <div className='queue'>
 
 
-      No. 3 { queue[0] } <br/>
+
+
+    <div className='container'>
+      <div className='circle-container'>
+        <div class="numberCircle">9</div>
+     </div>
+
+           {/* No. 3 { queue[0] } <br/>
       ... queue ahead.
-      status: pending.
+      status: pending. */}
+    </div>
 
-
+    
 
     </div>
   )

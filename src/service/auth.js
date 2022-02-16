@@ -6,7 +6,6 @@ export async function adminLogin(obj) {
   for (var key in obj) {
          if (obj.hasOwnProperty(key)) {
                data.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))                  
-               console.log(key + " -> " + obj[key]);
      }
     }
   data= data.join("&");
