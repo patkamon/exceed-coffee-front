@@ -14,6 +14,9 @@ const Dashboard = () => {
     }
   })
   const [todo, setTodo] = useState('')
+  const [table, setTable] = useState('')
+  const [tel, setTel] = useState('')
+
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
 
@@ -22,6 +25,14 @@ const Dashboard = () => {
     console.log('Current Todo ', currentTodo)
   }
 
+  function handleEditTableChange(e) {
+    setCurrentTodo({ ...currentTodo, table: e.target.value })
+    console.log('Current Todo ', currentTodo)
+  }
+  function handleEditTelChange(e) {
+    setCurrentTodo({ ...currentTodo, tel: e.target.value })
+    console.log('Current Todo ', currentTodo)
+  }
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
@@ -30,6 +41,12 @@ const Dashboard = () => {
     setTodo(e.target.value)
   }
 
+  function handleTableChange(e) {
+    setTable(e.target.value)
+  }
+  function handleTelChange(e) {
+    setTel(e.target.value)
+  }
   function handleFormSubmit(e) {
     e.preventDefault()
 
@@ -39,11 +56,15 @@ const Dashboard = () => {
         {
           id: todos.length + 1,
           text: todo.trim(),
+          table: table,
+          tel: tel,
         },
       ])
     }
 
     setTodo('')
+    setTable('')
+    setTel('')
   }
 
   function handleDeleteClick(id) {
@@ -70,36 +91,35 @@ const Dashboard = () => {
 
   function handleEditFormSubmit(e) {
     e.preventDefault()
-
     handleUpdateTodo(currentTodo.id, currentTodo)
   }
-  function handleDetailClick(todo) {}
-  console.log(todos)
+  console.log('todos is ', todos)
 
   return (
-    <div
-      className="Dashboard
-  "
-    >
+    <div className="Dashboard">
       <h1>SHOWQUEUE</h1>
-      <h1>
-        {' '}
+      {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
-        เพิ่มรายละเอียดของคนที่จอง(เบอร์ จำนวนคน) ~ คล้ายregister 3.
-        ดึงข้อมูลเริ่มต้นจาก database มาใช้{' '}
-      </h1>
+        ดึงข้อมูลเริ่มต้นจาก database มาใช้
+      </h1> */}
       {isEditing ? (
         <EditForm
           currentTodo={currentTodo}
           setIsEditing={setIsEditing}
           onEditInputChange={handleEditInputChange}
+          onEditTableChange={handleEditTableChange}
+          onEditTelChange={handleEditTelChange}
           onEditFormSubmit={handleEditFormSubmit}
         />
       ) : (
         <AddTodoForm
           todo={todo}
+          table={table}
+          tel={tel}
           onAddFormSubmit={handleFormSubmit}
           onAddInputChange={handleInputChange}
+          onAddTableChange={handleTableChange}
+          onAddTelChange={handleTelChange}
         />
       )}
 

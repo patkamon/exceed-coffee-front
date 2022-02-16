@@ -4,6 +4,8 @@ const EditForm = ({
   currentTodo,
   setIsEditing,
   onEditInputChange,
+  onEditTableChange,
+  onEditTelChange,
   onEditFormSubmit,
 }) => {
   return (
@@ -13,9 +15,23 @@ const EditForm = ({
       <input
         type="text"
         name="editTodo"
-        placeholder="Edit todo"
+        placeholder="Edit Name"
         value={currentTodo.text}
         onChange={onEditInputChange}
+      />
+      <input
+        type="table"
+        name="editTable"
+        placeholder="Edit Table"
+        value={currentTodo.table}
+        onChange={onEditTableChange}
+      />
+      <input
+        type="tel"
+        name="editTel"
+        placeholder="Edit Tel"
+        value={currentTodo.tel}
+        onChange={onEditTelChange}
       />
 
       <button type="submit">

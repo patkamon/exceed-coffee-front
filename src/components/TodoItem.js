@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { GrEdit } from 'react-icons/gr'
 import { MdRemove } from 'react-icons/md'
 import { BiDetail } from 'react-icons/bi'
 const TodoItem = ({ todo, onEditClick, onDeleteClick }) => {
+  const [show, setShow] = useState(false)
   return (
     <li key={todo.id}>
       {todo.text}{' '}
@@ -12,10 +13,16 @@ const TodoItem = ({ todo, onEditClick, onDeleteClick }) => {
       <button onClick={() => onDeleteClick(todo.id)}>
         <MdRemove />
       </button>
-      <button>
+      <button onClick={() => setShow(!show)}>
         {' '}
         <BiDetail />{' '}
       </button>
+      {show ? (
+        <div>
+          <div> Table: {todo.table}</div>
+          <div>TEL: {todo.tel}</div>
+        </div>
+      ) : null}
     </li>
   )
 }
