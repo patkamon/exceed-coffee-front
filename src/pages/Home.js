@@ -33,9 +33,6 @@ const Home = () => {
   }, [])
   
 
-
-
-
   return (
     <div>
         
