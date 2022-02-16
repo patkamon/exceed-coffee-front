@@ -1,35 +1,130 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
 
 * {
-    padding: 0;
-    margin: 0;
-    /* box-sizing: border-box; */
-    overflow: hidden;
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+  overflow: hidden;
 }
 
 body {
-    background-image: url("./img/background-1.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
+  background-image: url("./img/background-1.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .container {
-    margin-top: 15%;
-    margin-left: 12%;
-    width: 600px;
-    height: 800px;
+  margin-top: 15%;
+  margin-left: 12%;
+  width: 600px;
+  height: 800px;
 }
 
 h1 {
-    text-transform: uppercase;
-    color: #925338;
-    font-size: 600%;
-    font-family: "Nunito Sans", sans-serif;
-    text-shadow: 4px 4px #997966;
-    letter-spacing: 8px;
-    text-align: left;
-    line-height: 100px;
+  text-transform: uppercase;
+  color: #925338;
+  font-size: 500%;
+  font-family: "Nunito Sans", sans-serif;
+  text-shadow: 4px 4px #997966;
+  letter-spacing: 8px;
+  text-align: left;
+  line-height: 100px;
 }
 
+.wall {
+  margin: 15px auto 10px auto;
+  width: 500px;
+  height: 2px;
+  margin-left: 0;
+  background-color: #925338;
+}
 
+input {
+  background-color: #005d32;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  display: inline-block;
+  float: left;
+  margin-top: 10px;
+  height: 50px;
+}
+
+/* here */
+.customer-name {
+  width: 80%;
+}
+.phone-number {
+  width: 60%;
+}
+
+form .num-seat {
+  background-color: #005d32;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  float: center;
+
+  /* here */
+  width: 18%;
+  margin-left: 1%;
+}
+
+/* .grid-container {
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  display: grid;
+  grid-template-columns: 30% 30% 20% 20%;
+}
+
+.customer-name {
+  margin-top: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+}
+.phone-number {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+}
+.num-seat {
+  margin-top: 10px;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 80%;
+} */
+
+input[type="text"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+input[type="tel"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+input[type="number"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+::placeholder {
+  color: white;
+  text-transform: uppercase;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}

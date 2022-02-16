@@ -25,15 +25,17 @@ const Form = () => {
   return (
     <div className='container'>
       <h1>Starbook Shop</h1><br />
-
+      <div className='wall'></div>
       <form onSubmit={handleSubmit}>
-        <input className='customer-name' name='name' placeholder='Name' ></input><br/>
+
+
+        <div className='grid-container'>
+        <input className='customer-name' name='name' type='text' placeholder='Name' ></input><br/>
         <input className='phone-number' name='tel' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
-        <label className='label-num-seat' for='seat'>number of seat</label><br />
 
-        <input className='num-seat' name='num-seat'  type="number" min="1" max="8" required></input>
-        <button className='submit-btn' type='submit'>Submit</button>
-
+        <input className='num-seat' name='num-seat'  type="number" min="1" max="8" placeholder='seat' required></input>
+        <button className='submit-btn' type='submit' hidden>Submit</button>
+        </div>
       </form>
 
 

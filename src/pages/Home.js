@@ -17,16 +17,10 @@ const Home = () => {
         //   setError(resError.response.data)
             //  queueLogout()
         // })
-  
-  
+      
     }, 10000);
-  
-  
   }, [])
   
-
-
-
 
   return (
     <div>
