@@ -9,7 +9,7 @@ export async function adminLogin(obj) {
      }
     }
   data= data.join("&");
-  const res = await axios.post("https://ecourse.cpe.ku.ac.th/exceed01/api/token", data)
+  const res = await axios.post("https://ecourse.cpe.ku.ac.th/exceed01/api/login", data)
   return res.data
 }
 
