@@ -4,14 +4,6 @@
   padding: 0;
   margin: 0;
   /* box-sizing: border-box; */
-  overflow: hidden;
-}
-
-body {
-  background-image: url("./img/background-1.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
 }
 
 .container {
@@ -40,7 +32,7 @@ h1 {
   background-color: #925338;
 }
 
-input {
+.grid-container > input {
   background-color: #005d32;
   border: 2px solid #eee;
   border-radius: 20px;

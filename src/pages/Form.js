@@ -32,9 +32,8 @@ const Form = () => {
 
   return (
 
-    <div>
-        <Nav></Nav>
-
+    <div className='form'>
+    <Nav></Nav>
 
     <div className='container'>
       <h1>Starbook Shop</h1><br />

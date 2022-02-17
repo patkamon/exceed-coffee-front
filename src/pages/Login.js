@@ -27,15 +27,8 @@ const Login = () => {
 
   return (
 
-    <div>
-{/* 
-<div class="topnav">
-          <a class="active" href="/home">STARBOOK</a>
-         </div> */}
-         <Nav></Nav>
-        
-
-      
+    <div className='login'>
+    <Nav></Nav>
 
       <div className='container'>
         <h1>STARBOOK</h1>
@@ -44,7 +37,7 @@ const Login = () => {
         <br/>
         <br/>
         <div className= 'lefty'>
-          <form onSubmit={handleSubmit}>
+          <form className='form-login' onSubmit={handleSubmit}>
       
             <input name="username" type='text' placeholder="username" className="signup-text"/>
             <br/>
