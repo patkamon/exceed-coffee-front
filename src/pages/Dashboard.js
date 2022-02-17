@@ -165,9 +165,9 @@ const Dashboard = () => {
 
   function clickBTN(ob){
     console.log(ob.target.value)
-    if (window.confirm(`Are you sure to delete queue: ${ob.target.value[0]}`)) {
+    if (window.confirm(`Are you sure to delete queue: ${ob.target.value}`)) {
      
-      removeQueue(token,ob.target.value[0])
+      removeQueue(token,ob.target.value)
       getQueueList(token).then((data)=> {
         setQueueList(data)
       })
@@ -206,11 +206,30 @@ const Dashboard = () => {
 }
 
 
+
+const [show, setShow] = useState(true)
+const controlNavbar = () => {
+  if (window.scrollY > 100){
+    setShow(false)
+  } else {
+    setShow(true)
+  }
+}
+
+  useEffect(() => {
+    window.addEventListener('scroll',
+    controlNavbar)
+    return () => {
+      window.removeEventListener('scroll',controlNavbar)
+    }
+  },[])
+
+
   return (
 
     <div className="dashboard">
-    <Nav></Nav>
-      <h1>QUEUE</h1>
+    {show && <Nav></Nav>}
+      <h1 className='dashboard-title'>QUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
         ดึงข้อมูลเริ่มต้นจาก database มาใช้
@@ -254,7 +273,7 @@ const Dashboard = () => {
                 <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
                 QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
       </p></Collapsible>
-                <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={[d.queue_number, d.phone]}></input>
+                <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
                 <p className='close'>X</p>
 
 
@@ -286,7 +305,7 @@ const Dashboard = () => {
 
 
 
-
+        <div className='last'></div>
 
     </div>
     

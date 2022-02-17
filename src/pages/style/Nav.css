@@ -1,6 +1,8 @@
 .topnav {
   background-color: #925338;
   overflow: hidden;
+  position: fixed;
+  transition: top 0.3s;
 }
 
 /* Style the links inside the navigation bar */

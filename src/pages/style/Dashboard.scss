@@ -1,14 +1,26 @@
+.topnav {
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+  z-index: 1;
+}
+
 .last-element {
   margin-top: 30px;
-  height: 90vh;
+  min-height: 90vh;
+  padding-bottom: 30px;
+}
+
+.last {
+  padding: 20px;
 }
 
 .dashboard {
   overflow-y: visible !important;
 }
 
-h1 {
-  margin: auto;
+.dashboard-title {
+  margin: 100px auto 10px auto;
 }
 
 .dashboard {

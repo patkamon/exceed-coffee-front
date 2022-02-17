@@ -43,7 +43,7 @@ const Form = () => {
 
 
         <div className='grid-container'>
-        <input className='customer-name' name='name' type='text' placeholder='Name' ></input><br/>
+        <input className='customer-name' name='name' type='text' placeholder='Name' required></input><br/>
         <input className='phone-number' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
 
         <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
