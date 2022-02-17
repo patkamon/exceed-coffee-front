@@ -3,8 +3,8 @@ import TodoItem from '../components/TodoItem'
 import EditForm from '../components/EditForm'
 import AddTodoForm from '../components/AddTodoForm'
 import { useAuth } from '../contexts/AuthProvider'
-import './style/Nav.css'
 import { Navigate } from 'react-router-dom'
+import Nav from '../components/Nav'
 
 
 const Dashboard = () => {
@@ -21,16 +21,16 @@ const Dashboard = () => {
   //   }
   // },[])
 
-  return (
+  // return (
     
     
-    <div>Dashboard
-      <div class="topnav">
-  <a class="active" href="/home">STARBOOK</a>
-</div>
+//     <div>Dashboard
+//       <div class="topnav">
+//   <a class="active" href="/home">STARBOOK</a>
+// </div>
 
 
-  const [todos, setTodos] = useState(() => {
+   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos')
 
     if (savedTodos) {
@@ -38,7 +38,8 @@ const Dashboard = () => {
     } else {
       return []
     }
-  })
+  }) 
+
   const [todo, setTodo] = useState('')
   const [table, setTable] = useState('')
   const [tel, setTel] = useState('')
@@ -123,6 +124,7 @@ const Dashboard = () => {
 
   return (
     <div className="Dashboard">
+      <Nav></Nav>
       <h1>SHOWQUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.

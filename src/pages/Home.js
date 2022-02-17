@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Nav from '../components/Nav'
 import { checkCurrentPPL, checkCurrentQueue } from '../service/queue'
 
 import './style/Home.css'
@@ -53,13 +54,7 @@ const Home = () => {
     
     <div>
 
-
-    <div class="topnav">
-      <a class="active" href="/home">STARBOOK</a>
-      <div class='linkk'>
-      <a href="http://localhost:3000/dashboard">Admin</a>
-      </div>
-    </div>
+      <Nav></Nav>
 {/* 
     <script src="https://w7.pngwing.com/pngs/701/653/png-transparent-computer-icons-system-administrator-administrator-icon-silhouette-desktop-wallpaper-administrator-icon.png"></script> */}
     {/* <link rel="stylesheet" href="https://w7.pngwing.com/pngs/701/653/png-transparent-computer-icons-system-administrator-administrator-icon-silhouette-desktop-wallpaper-administrator-icon.png"></link> */}

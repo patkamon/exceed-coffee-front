@@ -5,6 +5,7 @@ import { getObjForm } from '../utils/form'
 import './style/Nav.css'
 
 import './style/Form.css'
+import Nav from '../components/Nav'
 
 
 const Form = () => {
@@ -23,19 +24,16 @@ const Form = () => {
       // wating for backend
       queueLogin(data)
       .then((data) => {
-      setQueueInfo(data.tel)
       })
+      setQueueInfo(data.phone)
+
 
   }
 
   return (
 
     <div>
-
-
-        <div class="topnav">
-          <a class="active" href="/home">STARBOOK</a>
-         </div>
+        <Nav></Nav>
 
 
     <div className='container'>
@@ -57,6 +55,7 @@ const Form = () => {
 
 
 
+    </div>
     </div>
   )
 }

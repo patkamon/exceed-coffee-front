@@ -1,9 +1,10 @@
 import React from 'react'
+import Nav from '../components/Nav'
 import { useAuth } from '../contexts/AuthProvider'
 import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
 
-import './style/Nav.css'
+
 
 import './style/Login.css'
 
@@ -27,22 +28,14 @@ const Login = () => {
   return (
 
     <div>
-
+{/* 
 <div class="topnav">
           <a class="active" href="/home">STARBOOK</a>
-         </div>
-        <h1>Login</h1>
+         </div> */}
+         <Nav></Nav>
         
 
-        <form onSubmit={handleSubmit}>
-   
-            <input name="username" placeholder="username" />
-            <input name="password" placeholder="password" type="password" />
-           <br/>
-           <button className='submit-btn' type='submit'>Submit</button>
-
-        </form>
-
+      
 
       <div className='container'>
         <h1>STARBOOK</h1>

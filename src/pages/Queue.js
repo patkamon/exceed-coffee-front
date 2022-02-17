@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Nav from '../components/Nav'
 import { useAuth } from '../contexts/AuthProvider'
 import './style/Nav.css'
 
@@ -34,9 +35,7 @@ useEffect(() => {
   return (
 
     <div>
-      <div class="topnav">
-          <a class="active" href="/home">STARBOOK</a>
-         </div>
+      <Nav></Nav>
 
     <div className='queue'>
 
@@ -56,6 +55,7 @@ useEffect(() => {
 
     
 
+    </div>
     </div>
   )
 }
