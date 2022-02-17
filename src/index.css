@@ -17,6 +17,11 @@ code {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  overflow-y: hidden;
+  top: 0;
+  bottom: 0;
 }
 
 .login {
@@ -24,6 +29,11 @@ code {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  overflow-y: hidden;
+  top: 0;
+  bottom: 0;
 }
 
 .home {
@@ -31,6 +41,11 @@ code {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  overflow-y: hidden;
+  top: 0;
+  bottom: 0;
 }
 
 .dashboard {
@@ -39,21 +54,15 @@ code {
   background-size: cover;
   background-attachment: fixed;
 }
-.dashboard .add-todo-form {
-  background-image: url("./pages/style/img/background-2.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-.dashboard .todo-item {
-  background-image: url("./pages/style/img/background-2.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
+
 .queue {
   background-image: url("./pages/style/img/background-2.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  overflow-y: hidden;
+  top: 0;
+  bottom: 0;
 }

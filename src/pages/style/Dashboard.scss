@@ -1,41 +1,42 @@
 .last-element {
-  padding-bottom: 100%;
+  padding-bottom: 400px;
+}
+.dashboard {
+  overflow-y: visible !important;
+}
+
+h1 {
+  margin: auto;
 }
 
 .dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-/* 
-.btn-col {
-  padding: 10px;
-  border: 2px solid white;
-  margin: 5px auto;
-  background-color: green;
-  color: white;
+  align-items: flex-start;
 }
 
-.Collapsible__trigger.is_open {
-  padding: 10px;
-  border: 2px solid white;
-  margin: 5px auto;
-  background-color: green;
-  color: white;
-} */
-/* .Collapsible {
-  background-color: $base;
+.list {
+  position: relative;
 }
 
+.Collapsible {
+  overflow: visible;
+  margin-left: 100px;
+  background-color: #ebe7e5;
+  margin-top: 10px;
+  font-size: 200%;
+}
+
+//The content within the collaspable area
 .Collapsible__contentInner {
-  padding: 10px;
-  border: 1px solid $lightGrey;
+  padding: 10px 100px;
+  border: 1px solid white;
   border-top: 0;
 
   p {
     margin-bottom: 10px;
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 80%;
+    line-height: 120%;
 
     &:last-child {
       margin-bottom: 0;
@@ -43,6 +44,7 @@
   }
 }
 
+//The link which when clicked opens the collapsable area
 .Collapsible__trigger {
   display: block;
   font-weight: 400;
@@ -50,7 +52,7 @@
   position: relative;
   border: 1px solid white;
   padding: 10px;
-  background: $cyan;
+  background: #005d32;
   color: white;
 
   &:after {
@@ -61,11 +63,13 @@
     top: 10px;
     display: block;
     transition: transform 300ms;
+    color: orange;
   }
 
   &.is-open {
     &:after {
       transform: rotateZ(180deg);
+      color: red;
     }
   }
 
@@ -89,4 +93,4 @@
   font-size: 12px;
   background-color: #cbb700;
   color: black;
-} */
+}

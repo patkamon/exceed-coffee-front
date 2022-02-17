@@ -5,13 +5,12 @@ import AddTodoForm from '../components/AddTodoForm'
 import { useAuth } from '../contexts/AuthProvider'
 import { Navigate } from 'react-router-dom'
 
-import "./style/Dashboard.css"
+import "./style/Dashboard.scss"
 import { getQueueList } from '../service/dashboard'
+import Collapsible from 'react-collapsible'
 
 
 const Dashboard = () => {
-
-  const { token } = useAuth()
 
   // useEffect(() => {
   //   console.log(token)
@@ -40,7 +39,7 @@ const Dashboard = () => {
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
 
-  const [queueList, setQueueList] = useState({})
+  const [queueList, setQueueList] = useState()
 
   function handleEditInputChange(e) {
     setCurrentTodo({ ...currentTodo, text: e.target.value })
@@ -55,16 +54,17 @@ const Dashboard = () => {
     setCurrentTodo({ ...currentTodo, tel: e.target.value })
     console.log('Current Todo ', currentTodo)
   }
-  useEffect(() => {
-    localStorage.setItem('todos', JSON.stringify(todos))
-  }, [todos])
+  // useEffect(() => {
+  //   localStorage.setItem('todos', JSON.stringify(todos))
+  // }, [todos])
 
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('token'));
+    const token = JSON.parse(localStorage.getItem("token"))
     getQueueList(token).then((data)=> {
       setQueueList(data)
-      console.log(queueList,'q')
+      console.log(data,'q')
+      console.log(queueList,'q2')
     })
 
   },[])
@@ -171,14 +171,15 @@ const Dashboard = () => {
         ))}
       </ul>
 
-
         <ul className='last-element'>
       {queueList && queueList.map(d => (
               <div className='list'>
-              <button classNmae='collapsible' key={d.phone}>{d.name}</button>
-              <div className='content'>
-                <p>Lorem ipsum...</p> 
-                </div>
+
+                <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
+                QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
+      </p></Collapsible>
+
+                
                 </div>))}
       </ul>
       
