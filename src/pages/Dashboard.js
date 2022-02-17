@@ -64,6 +64,8 @@ const Dashboard = () => {
   // }, [todos])
   const {adminLogout, setAdminInfo} = useAuth()
   
+  const [error, setError] = useState()
+
 
   useEffect(() => {
     const checkToken = setInterval(()=>{
@@ -184,6 +186,10 @@ const Dashboard = () => {
     queueLogin(data)
     .then((data) => {
       console.log(data)
+    }).catch((e)=>{
+      if (e.response.status=== 406){
+        setError('this phone number already in queue!')
+      }
     })
 
 }
@@ -255,7 +261,10 @@ const Dashboard = () => {
 
         <input className='num-seat-d' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
         <button className='submit-btn' type='submit' hidden>Submit</button>
+        
 
+
+      <h5>{error}</h5>
     <button type="submit" className="btn">Add</button>
     <button type="button" className="btn cancel" onClick={closeForm}>Close</button>
   </form>
