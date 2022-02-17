@@ -6,6 +6,7 @@ import { useAuth } from '../contexts/AuthProvider'
 import { Navigate } from 'react-router-dom'
 
 import "./style/Dashboard.css"
+import { getQueueList } from '../service/dashboard'
 
 
 const Dashboard = () => {
@@ -24,7 +25,7 @@ const Dashboard = () => {
 
 
   const [todos, setTodos] = useState(() => {
-    const savedTodos = localStorage.getItem('todos')
+  const savedTodos = localStorage.getItem('todos')
 
     if (savedTodos) {
       return JSON.parse(savedTodos)
@@ -38,6 +39,8 @@ const Dashboard = () => {
 
   const [isEditing, setIsEditing] = useState(false)
   const [currentTodo, setCurrentTodo] = useState({})
+
+  const [queueList, setQueueList] = useState({})
 
   function handleEditInputChange(e) {
     setCurrentTodo({ ...currentTodo, text: e.target.value })
@@ -55,6 +58,17 @@ const Dashboard = () => {
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos))
   }, [todos])
+
+
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    getQueueList(token).then((data)=> {
+      setQueueList(data)
+      console.log(queueList,'q')
+    })
+
+  },[])
+
 
   function handleInputChange(e) {
     setTodo(e.target.value)
@@ -112,7 +126,11 @@ const Dashboard = () => {
     e.preventDefault()
     handleUpdateTodo(currentTodo.id, currentTodo)
   }
-  console.log('todos is ', todos)
+
+
+  
+  
+
 
   return (
     <div className="dashboard">
@@ -152,6 +170,24 @@ const Dashboard = () => {
           />
         ))}
       </ul>
+
+
+        <ul className='last-element'>
+      {queueList && queueList.map(d => (
+              <div className='list'>
+              <button classNmae='collapsible' key={d.phone}>{d.name}</button>
+              <div className='content'>
+                <p>Lorem ipsum...</p> 
+                </div>
+                </div>))}
+      </ul>
+      
+ 
+        
+
+
+
+
 
     </div>
   )

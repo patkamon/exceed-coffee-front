@@ -9,7 +9,6 @@ const AddTodoForm = ({
   onAddTableChange,
   onAddTelChange,
 }) => {
-  console.log(todo)
   return (
     <div className='add-todo-form'>
       <form onSubmit={onAddFormSubmit}>

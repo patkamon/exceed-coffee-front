@@ -44,6 +44,10 @@ const AuthProvider = ({ children }) => {
     navigate("/home")
   }
 
+
+
+  
+
   useEffect(() => {
     // const oldUser = localStorage.getItem("user")
 
@@ -64,6 +68,9 @@ const AuthProvider = ({ children }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+
+
 
   return (
     <AuthContext.Provider
