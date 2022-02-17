@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import './style/Nav.css'
 
+import './style/Queue.css'
+
 const Queue = () => {
 
   const { queue, queueLogout } = useAuth()
@@ -30,17 +32,29 @@ useEffect(() => {
 
 
   return (
+
     <div>
       <div class="topnav">
           <a class="active" href="/home">STARBOOK</a>
          </div>
 
+    <div className='queue'>
 
-      No. 3 { queue[0] } <br/>
+
+
+
+
+    <div className='container'>
+      <div className='circle-container'>
+        <div class="numberCircle">9</div>
+     </div>
+
+           {/* No. 3 { queue[0] } <br/>
       ... queue ahead.
-      status: pending.
+      status: pending. */}
+    </div>
 
-
+    
 
     </div>
   )
