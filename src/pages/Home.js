@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { checkCurrentPPL, checkCurrentQueue } from '../service/queue'
 
 import './style/Home.css'
-
+import './style/Nav.css'
 
 
 const Home = () => {
@@ -49,7 +49,34 @@ const Home = () => {
   
 
   return (
+    
+    
     <div>
+
+
+    <div class="topnav">
+      <a class="active" href="/home">STARBOOK</a>
+      <div class='linkk'>
+      <a href="http://localhost:3000/dashboard">Admin</a>
+      </div>
+    </div>
+{/* 
+    <script src="https://w7.pngwing.com/pngs/701/653/png-transparent-computer-icons-system-administrator-administrator-icon-silhouette-desktop-wallpaper-administrator-icon.png"></script> */}
+    {/* <link rel="stylesheet" href="https://w7.pngwing.com/pngs/701/653/png-transparent-computer-icons-system-administrator-administrator-icon-silhouette-desktop-wallpaper-administrator-icon.png"></link> */}
+
+    {/* <link rel="icon" type="./img/admin.jpeg" href="http://localhost:3000/dashboard" /> */}
+
+    {/* <i class="fa-solid fa-screwdriver-wrench"></i> */}
+    {/* <a href="http://localhost:3000/dashboard"> 
+    <ion-icon name="hammer-outline"></ion-icon>
+    </a>
+    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+     */}
+ 
+
         
     
       
@@ -76,6 +103,7 @@ const Home = () => {
         </div>
 
       </div>
+
 
       
 

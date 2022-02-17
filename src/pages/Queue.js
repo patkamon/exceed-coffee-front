@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthProvider'
+import './style/Nav.css'
 
 import './style/Queue.css'
 
@@ -31,7 +32,14 @@ useEffect(() => {
 
 
   return (
+
+    <div>
+      <div class="topnav">
+          <a class="active" href="/home">STARBOOK</a>
+         </div>
+
     <div className='queue'>
+
 
 
 

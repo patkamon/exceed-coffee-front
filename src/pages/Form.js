@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { queueLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
+import './style/Nav.css'
 
 import './style/Form.css'
 
@@ -28,6 +29,14 @@ const Form = () => {
   }
 
   return (
+
+    <div>
+
+
+        <div class="topnav">
+          <a class="active" href="/home">STARBOOK</a>
+         </div>
+
 
     <div className='container'>
       <h1>Starbook Shop</h1><br />

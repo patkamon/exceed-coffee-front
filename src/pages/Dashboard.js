@@ -3,7 +3,9 @@ import TodoItem from '../components/TodoItem'
 import EditForm from '../components/EditForm'
 import AddTodoForm from '../components/AddTodoForm'
 import { useAuth } from '../contexts/AuthProvider'
+import './style/Nav.css'
 import { Navigate } from 'react-router-dom'
+
 
 const Dashboard = () => {
 
@@ -18,6 +20,14 @@ const Dashboard = () => {
   //     adminLogout();
   //   }
   // },[])
+
+  return (
+    
+    
+    <div>Dashboard
+      <div class="topnav">
+  <a class="active" href="/home">STARBOOK</a>
+</div>
 
 
   const [todos, setTodos] = useState(() => {
@@ -148,7 +158,12 @@ const Dashboard = () => {
           />
         ))}
       </ul>
+
     </div>
+    
+
+
+
   )
 }
 
