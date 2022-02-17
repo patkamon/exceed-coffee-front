@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
+import './style/Nav.css'
 
 const Login = () => {
 
@@ -22,8 +23,11 @@ const Login = () => {
   return (
 
     <div>
-
+<div class="topnav">
+          <a class="active" href="/home">STARBOOK</a>
+         </div>
         <h1>Login</h1>
+        
 
         <form onSubmit={handleSubmit}>
    

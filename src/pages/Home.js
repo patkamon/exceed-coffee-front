@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import './style/Home.css'
-
+import './style/Nav.css'
 
 const Home = () => {
 
@@ -29,9 +29,12 @@ const Home = () => {
 
 
   return (
+    
     <div>
 
-      
+<div class="topnav">
+  <a class="active" href="/home">STARBOOK</a>
+</div>
 
       Starbook Shop<br/>
 

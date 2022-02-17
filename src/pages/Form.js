@@ -2,6 +2,7 @@ import React from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { queueLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
+import './style/Nav.css'
 
 const Form = () => {
 
@@ -22,7 +23,12 @@ const Form = () => {
   }
 
   return (
-    <div>Form
+    <div>
+
+
+        <div class="topnav">
+          <a class="active" href="/home">STARBOOK</a>
+         </div>
 
       <form onSubmit={handleSubmit}>
         <input className='customer-name' name='name' placeholder='name' ></input><br/>
