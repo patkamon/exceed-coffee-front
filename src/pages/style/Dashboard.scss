@@ -16,11 +16,36 @@ h1 {
 }
 
 .list {
+  display: grid;
+  grid-template-columns: auto 20px 10px;
+}
+
+.remove-btn {
+  padding: 20px;
+  margin-left: 10px;
+  font-size: 0px;
+  border-radius: 80%;
+  width: auto;
+  height: auto;
+  //   border: 1px solid white;
+  border: none;
+  background-color: transparent;
+}
+
+.close {
   position: relative;
+  top: 30%;
+  right: 4px;
+  color: #925338;
+  pointer-events: none;
+}
+
+.remove-btn:hover {
+  cursor: pointer;
 }
 
 .Collapsible {
-  overflow: visible;
+  cursor: pointer;
   margin-left: 100px;
   background-color: #ebe7e5;
   margin-top: 10px;

@@ -97,7 +97,7 @@ h1 {
   background-color: #925338;
 }
 
-input {
+.form-login > input {
   /* color: #72402b;
   font-family: "Nunito Sans", sans-serif;
   font-size: 130%;

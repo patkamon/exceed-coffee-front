@@ -31,7 +31,7 @@ const Login = () => {
         <br/>
         <br/>
         <div className= 'lefty'>
-          <form onSubmit={handleSubmit}>
+          <form className='form-login' onSubmit={handleSubmit}>
       
             <input name="username" type='text' placeholder="username" className="signup-text"/>
             <br/>

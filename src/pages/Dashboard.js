@@ -43,16 +43,16 @@ const Dashboard = () => {
 
   function handleEditInputChange(e) {
     setCurrentTodo({ ...currentTodo, text: e.target.value })
-    console.log('Current Todo ', currentTodo)
+    // console.log('Current Todo ', currentTodo)
   }
 
   function handleEditTableChange(e) {
     setCurrentTodo({ ...currentTodo, table: e.target.value })
-    console.log('Current Todo ', currentTodo)
+    // console.log('Current Todo ', currentTodo)
   }
   function handleEditTelChange(e) {
     setCurrentTodo({ ...currentTodo, tel: e.target.value })
-    console.log('Current Todo ', currentTodo)
+    // console.log('Current Todo ', currentTodo)
   }
   // useEffect(() => {
   //   localStorage.setItem('todos', JSON.stringify(todos))
@@ -63,8 +63,8 @@ const Dashboard = () => {
     const token = JSON.parse(localStorage.getItem("token"))
     getQueueList(token).then((data)=> {
       setQueueList(data)
-      console.log(data,'q')
-      console.log(queueList,'q2')
+      // console.log(data,'q')
+      // console.log(queueList,'q2')
     })
 
   },[])
@@ -128,7 +128,9 @@ const Dashboard = () => {
   }
 
 
-  
+  function clickBTN(ob){
+    console.log(ob.target.value)
+  }
   
 
 
@@ -178,7 +180,8 @@ const Dashboard = () => {
                 <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
                 QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
       </p></Collapsible>
-
+                <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.phone}></input>
+                <p className='close'>X</p>
                 
                 </div>))}
       </ul>
