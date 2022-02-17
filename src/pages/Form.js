@@ -30,7 +30,6 @@ const Form = () => {
   return (
     <div className='form'>
     <div className='container'>
-      <body>
       <h1>Starbook Shop</h1><br />
       <div className='wall'></div>
 
@@ -48,7 +47,7 @@ const Form = () => {
 
 
 
-     </body>
+
     </div>
     </div>
   )
