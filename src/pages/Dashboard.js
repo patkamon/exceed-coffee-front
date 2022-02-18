@@ -208,6 +208,7 @@ const Dashboard = () => {
 
 
 const [show, setShow] = useState(true)
+
 const controlNavbar = () => {
   if (window.scrollY > 100){
     setShow(false)
@@ -228,7 +229,7 @@ const controlNavbar = () => {
   return (
 
     <div className="dashboard">
-    {show && <Nav></Nav>}
+    {show && <Nav className='nav'></Nav>}
       <h1 className='dashboard-title'>QUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
