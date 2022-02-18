@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Collapsible from 'react-collapsible'
 import { useLocation } from 'react-router-dom'
 import '../pages/style/Nav.css'
+import { clearAllQueue } from '../service/dashboard'
 const Nav = () => {
 
     const [locate,setLocate] = useState()
@@ -10,6 +11,20 @@ const Nav = () => {
     useEffect(() => {
         setLocate(location.pathname.toString())
     },[])
+
+
+
+
+    function clearQueue(e) {
+      e.preventDefault()
+      const token = JSON.parse(localStorage.getItem("token"))
+      clearAllQueue(token).then((data)=>{
+        console.log('clear success')
+      }).catch((e)=>{
+        console.log('error status is: ',e.response.status)
+      })
+    }
+
 
 
   return (
@@ -22,8 +37,8 @@ const Nav = () => {
       <i className="fa fa-caret-down"></i>  </button>
 
       <div className="dropdown-content">
-      <input type='submit' value='clear all' ></input>
-      <input type='submit' value='logout' ></input>
+      <input type='submit' onClick={clearQueue} value='clear all' ></input>
+      <input type='submit'  value='logout' ></input>
     </div>
       
       </div>}

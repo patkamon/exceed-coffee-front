@@ -286,7 +286,7 @@ const controlNavbar = () => {
       <button className="open-button" onClick={openForm}>Add queue</button>
 
 <div className="form-popup" id="myForm">
-  <form action="/action_page.php" autocomplete='off' onSubmit={handleSubmit} className="form-container">
+  <form action="/action_page.php" autoComplete='off' onSubmit={handleSubmit} className="form-container">
     <h2>Add queue</h2>
 
     <input className='customer-name-d' name='name' type='text' placeholder='Name' ></input><br/>
