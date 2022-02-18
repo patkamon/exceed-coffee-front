@@ -17,9 +17,9 @@ const Nav = () => {
   
 
 
-  const modal = document.getElementById("myModal");
-  const span = document.getElementsByClassName("close-btn")[0];
-  const check = document.getElementsByClassName("check-btn")[0];
+  const modal = document.getElementById("nav-myModal");
+  const span = document.getElementsByClassName("nav-close-btn")[0];
+  const check = document.getElementsByClassName("nav-check-btn")[0];
 
 
     useEffect(() => {
@@ -48,10 +48,10 @@ const Nav = () => {
       //   console.log('error status is: ',e.response.status)
       // })
     }
-
+    if (locate === '/dashboard'){
     window.onclick = function(event) {
-      if (event.target === check) {
-        console.log('click')
+      if (event.target === check ) {
+        console.log('click in nav')
         const token = JSON.parse(localStorage.getItem("token"))
         const obj = {'username':document.getElementById('user').value,
                     'password':document.getElementById('pass').value}
@@ -87,7 +87,7 @@ const Nav = () => {
       } 
       
     }
-
+  }
 
 
 
@@ -113,18 +113,17 @@ const Nav = () => {
       <input type='submit' onClick={clearQueue} value='clear all' ></input>
       <input type='submit'  onClick={logout} value='logout' ></input>
     </div>
-      
-      </div>}
-
-      <div id="myModal" className="modal">
-
-<div className="modal-content">
-<span className="close-btn">&times;</span>
-<span className="check-btn">&#10003;</span>
 
 
-<p className='warn1'>{warn1}</p>
-<p className ='warn2'>{warn2}</p>
+    <div id="nav-myModal" className="nav-modal">
+
+<div className="nav-modal-content">
+<span className="nav-close-btn">&times;</span>
+<span className="nav-check-btn">&#10003;</span>
+
+
+<p className='nav-warn1'>{warn1}</p>
+<p className ='nav-warn2'>{warn2}</p>
 <form>
 <input id='user' type='text' placeholder='username'></input><br/>
 <input id='pass' type='password' placeholder='password'></input>
@@ -132,6 +131,10 @@ const Nav = () => {
 </div>
 
 </div>
+      
+      </div>}
+
+
 
 
 
