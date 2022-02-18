@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Nav from '../components/Nav'
+import { checkQueueExist } from '../service/queue'
 import { getObjForm } from '../utils/form'
 
 
@@ -15,17 +16,12 @@ const Order = () => {
 
   function handleSubmit(e) {
     e.preventDefault()
-    const a = document.getElementById("q-menu1").value
-    const b = document.getElementById("q-menu2").value
-    const c = document.getElementById("q-menu3").value
-    console.log(a,b,c)
-    console.log(`price a is 300 then total is ${a*300}`)
-    console.log(`price b is 280 then total is ${b*280}`)
-    console.log(`price c is 500 then total is ${c*500}`)
-
-    const cal = (a*300) + (b*280) + (c*500)
-    setTotal(cal)
-
+    const phone = JSON.parse(localStorage.getItem("phone"))
+    checkQueueExist(phone).then((d)=> {
+      console.log('exist')
+    }).error((er)=>{
+        console.log(er.response.status)
+    })
   }
 
   function openForm() {
