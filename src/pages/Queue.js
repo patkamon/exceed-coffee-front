@@ -12,22 +12,22 @@ const Queue = () => {
   const [currentQ, setCurrentQ] = useState()
 
 
-useEffect(() => {
+// useEffect(() => {
 
-  const interval = setInterval(() => {
-    console.log('10sec passed');
-    // checkQueue(queue).then((data) => {
-    //   console.log(data)
-    // }).catch((resError) => {
-      //   setError(resError.response.data)
-          //  queueLogout()
-      // })
-
-
-  }, 10000);
+//   const interval = setInterval(() => {
+//     console.log('10sec passed');
+//     // checkQueue(queue).then((data) => {
+//     //   console.log(data)
+//     // }).catch((resError) => {
+//       //   setError(resError.response.data)
+//           //  queueLogout()
+//       // })
 
 
-}, [])
+//   }, 10000);
+
+
+// }, [])
 
 
 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import { checkOrder, insertOrder } from '../service/order'
 import { checkQueueExist } from '../service/queue'
@@ -13,6 +13,7 @@ const Order = () => {
     const [total, setTotal] = useState(0)
 
     const navigate = useNavigate()
+    const locate = useLocation()
     
     const [qty1, setQty1] = useState()
     const [qty2, setQty2] = useState()
@@ -25,13 +26,16 @@ const Order = () => {
       navigate('/queue')
     })
 
-
-    const a = document.getElementById("q-menu1").value
-    const b = document.getElementById("q-menu2").value
-    const c = document.getElementById("q-menu3").value
-    const cal = (a*300) + (b*280) + (c*500)
-    setTotal(cal)
-    
+    const price = setInterval(()=>{
+      const a = document.getElementById("q-menu1").value
+      const b = document.getElementById("q-menu2").value
+      const c = document.getElementById("q-menu3").value
+      const cal = (a*300) + (b*280) + (c*500)
+      setTotal(cal)
+      checkOrder(phone).then(()=>{
+        navigate('/queue')
+      })
+    },5000)
   },[])
 
 
