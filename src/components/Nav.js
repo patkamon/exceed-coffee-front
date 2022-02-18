@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import Collapsible from 'react-collapsible'
 import { useLocation } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthProvider'
 import '../pages/style/Nav.css'
 import { clearAllQueue } from '../service/dashboard'
 const Nav = () => {
 
     const [locate,setLocate] = useState()
     const location = useLocation()
+    const {adminLogout} = useAuth()
 
     useEffect(() => {
         setLocate(location.pathname.toString())
@@ -25,6 +27,11 @@ const Nav = () => {
       })
     }
 
+    function logout(e){
+      e.preventDefault()
+      adminLogout()
+    }
+
 
 
   return (
@@ -38,7 +45,7 @@ const Nav = () => {
 
       <div className="dropdown-content">
       <input type='submit' onClick={clearQueue} value='clear all' ></input>
-      <input type='submit'  value='logout' ></input>
+      <input type='submit'  onClick={logout} value='logout' ></input>
     </div>
       
       </div>}
