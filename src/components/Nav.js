@@ -40,7 +40,7 @@ const Nav = () => {
           <a className="active" href="/home">STARBOOK</a>
           {locate === '/home' && <a className="linkk" href="/login">ADMIN</a>}
           {locate === '/dashboard' && <div className='dropdown'>
-          <button className="dropbtn">Dropdown
+          <button className="dropbtn">Option
       <i className="fa fa-caret-down"></i>  </button>
 
       <div className="dropdown-content">

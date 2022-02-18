@@ -225,6 +225,11 @@ const controlNavbar = () => {
     }
   },[])
 
+  //get order detail
+  function clickCollapsible(e) {
+    console.log('click',e)
+  }
+
 
   return (
 
@@ -271,7 +276,7 @@ const controlNavbar = () => {
       {queueList && queueList.map(d => (
               <div className='list'>
 
-                <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
+                <Collapsible className='btn-col' key={d.phone} trigger={d.name} onOpen={() => clickCollapsible(d.phone)}><p>
                 QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
       </p></Collapsible>
                 <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
