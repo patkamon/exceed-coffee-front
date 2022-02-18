@@ -12,11 +12,12 @@ import { getQueueList, removeQueue } from '../service/dashboard'
 import Collapsible from 'react-collapsible'
 import { getObjForm } from '../utils/form'
 import { queueLogin } from '../service/auth'
+import { checkOrder } from '../service/order'
 
 
 const Dashboard = () => {
 
- 
+  const [collap, setCollap] = useState({})
   const [token, setToken] = useState()
 
   // useEffect(() => {
@@ -82,7 +83,6 @@ const Dashboard = () => {
     const checkToken = setInterval(()=>{
       const token_t = JSON.parse(localStorage.getItem("token"))
       if (token_t === null){
-        console.log('hi')
         setToken()
         adminLogout()
       }
@@ -97,7 +97,7 @@ const Dashboard = () => {
     getQueueList(token_t).then((data)=> {
       setQueueList(data)
     }).catch((e) =>{
-      console.log(e)
+      console.log('autologout')
       setToken()
       adminLogout()
     })
@@ -227,8 +227,17 @@ const controlNavbar = () => {
 
   //get order detail
   function clickCollapsible(e) {
-    console.log('click',e)
-  }
+    checkOrder(e).then((data)=>{
+      console.log(data)
+      setCollap(prevState => ({
+        ...prevState,
+        [e]: data.cappucino
+      }))
+    console.log(collap)
+    }).catch(()=>{
+    }
+    )}
+ 
 
 
   return (
@@ -278,7 +287,9 @@ const controlNavbar = () => {
 
                 <Collapsible className='btn-col' key={d.phone} trigger={d.name} onOpen={() => clickCollapsible(d.phone)}><p>
                 QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
-      </p></Collapsible>
+      </p>
+      {/* <p>{collap.d.phone}</p> */}
+      </Collapsible>
                 <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
                 <p className='close'>X</p>
 
