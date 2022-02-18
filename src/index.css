@@ -12,6 +12,18 @@ code {
     monospace;
 }
 
+.order {
+  background-image: url("./pages/style/img/background-3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  position: absolute;
+  width: 100%;
+  overflow-y: hidden;
+  top: 0px;
+  bottom: 0;
+}
+
 .form {
   background-image: url("./pages/style/img/background-1.jpeg");
   background-repeat: no-repeat;
