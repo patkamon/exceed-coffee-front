@@ -1,12 +1,11 @@
 import axios from 'axios'
 
 //waitfor backend
-export async function checkQueueExist(queue) {
+export async function checkQueueExist(phone) {
   // check that queue still exist
-  console.log('queue is', queue)
+  const json = JSON.stringify({ number: 1111 })
   const res = await axios.get(
-    `https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/get_number_byphone`,
-    queue
+    `https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/get_number_byphone/${phone}`
   )
   return res.data
 }
