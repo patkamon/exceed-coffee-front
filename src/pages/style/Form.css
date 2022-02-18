@@ -195,3 +195,7 @@ input:-webkit-autofill {
 input:focus::placeholder {
   color: transparent;
 }
+
+.submit-btn {
+  margin-left: 10000px;
+}

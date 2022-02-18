@@ -53,16 +53,27 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 input[type="number"] {
-  line-height: 10px;
+  line-height: 40px;
+  font-size: 25px;
 }
 
 input[type="number"]::-webkit-inner-spin-button {
-  width: 30px;
-  height: 30px;
+  width: 20px;
 }
 
 .btn-order {
   position: sticky;
   bottom: 20px;
   margin-right: 10%;
+}
+
+.form-container .order-now-btn {
+  background-color: #04aa6d;
+  color: white;
+  padding: 16px 65px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  opacity: 0.8;
 }

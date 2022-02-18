@@ -80,7 +80,7 @@ const Form = () => {
         <input className='phone-number' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
 
         <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
-        <button className='submit-btn' type='submit' hidden>Submit</button>
+        <button className='submit-btn' type='submit' disabled="">Submit</button>
         
         
         </div>

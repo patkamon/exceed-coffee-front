@@ -7,9 +7,11 @@ import './style/Order.css'
 
 const Order = () => {
 
-
+    const [total, setTotal] = useState(0)
 
     
+
+
 
   function handleSubmit(e) {
     e.preventDefault()
@@ -17,10 +19,22 @@ const Order = () => {
     const b = document.getElementById("q-menu2").value
     const c = document.getElementById("q-menu3").value
     console.log(a,b,c)
+    console.log(`price a is 300 then total is ${a*300}`)
+    console.log(`price b is 280 then total is ${b*280}`)
+    console.log(`price c is 500 then total is ${c*500}`)
+
+    const cal = (a*300) + (b*280) + (c*500)
+    setTotal(cal)
+
   }
 
   function openForm() {
     document.getElementById("myForm").style.display = "block";
+    const a = document.getElementById("q-menu1").value
+    const b = document.getElementById("q-menu2").value
+    const c = document.getElementById("q-menu3").value
+    const cal = (a*300) + (b*280) + (c*500)
+    setTotal(cal)
   }
 
   function closeForm() {
@@ -80,6 +94,7 @@ const Order = () => {
 
         <input className='num-seat-d' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input> */}
 
+        <h4>Total is {total}</h4>
 
         <input type='radio'></input>
 
@@ -88,7 +103,7 @@ const Order = () => {
 
 
 
-    <button type="submit" className="btn">Order Now</button>
+    <button type="submit" className="order-now-btn">Order Now</button>
     <button type="button" className="btn cancel" onClick={closeForm} >Close</button>
   </form>
   </div>
