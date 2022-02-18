@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Nav from '../components/Nav'
+import { checkOrder, insertOrder } from '../service/order'
 import { checkQueueExist } from '../service/queue'
 import { getObjForm } from '../utils/form'
 
@@ -10,16 +12,55 @@ const Order = () => {
 
     const [total, setTotal] = useState(0)
 
+    const navigate = useNavigate()
     
+    const [qty1, setQty1] = useState()
+    const [qty2, setQty2] = useState()
+    const [qty3, setQty3] = useState()
 
+
+  useEffect(()=> {
+    const phone = JSON.parse(localStorage.getItem("phone"))
+    checkOrder(phone).then(()=>{
+      navigate('/queue')
+    })
+
+
+    const a = document.getElementById("q-menu1").value
+    const b = document.getElementById("q-menu2").value
+    const c = document.getElementById("q-menu3").value
+    const cal = (a*300) + (b*280) + (c*500)
+    setTotal(cal)
+    
+  },[])
 
 
   function handleSubmit(e) {
     e.preventDefault()
     const phone = JSON.parse(localStorage.getItem("phone"))
     checkQueueExist(phone).then((d)=> {
-      console.log('exist')
-    }).error((er)=>{
+      console.log(e.target)
+
+
+
+      const obj = {
+        "cafe_code": 1,
+        "phone": phone,
+        "cappucino":  qty1,
+        "hot_coco": qty2,
+        "ice_cream_cake":qty3,
+        "already_pay": false
+      }
+      console.log(obj)
+      if(total!==0){
+      insertOrder(obj).then((r)=>{
+        console.log('success')
+        navigate('/queue')
+        
+      })}else{
+        console.log('0 amount wtf!')
+      }
+    }).catch((er)=>{
         console.log(er.response.status)
     })
   }
@@ -29,8 +70,13 @@ const Order = () => {
     const a = document.getElementById("q-menu1").value
     const b = document.getElementById("q-menu2").value
     const c = document.getElementById("q-menu3").value
-    const cal = (a*300) + (b*280) + (c*500)
-    setTotal(cal)
+    a? setQty1(a) : setQty1(0)
+    b? setQty2(b) : setQty2(0)
+    c? setQty3(c) : setQty3(0)
+
+
+
+
   }
 
   function closeForm() {
@@ -50,21 +96,21 @@ const Order = () => {
             <h2 className='menu1'>Cappucino</h2>
             <ul >
                 <li>300 xcd</li>
-                <input id='q-menu1' type='number' min='0'  placeholder='Qty'></input>
+                <input id='q-menu1' type='number' min='0' placeholder='Qty'></input>
             </ul>
            
 
             <h2 className='menu2'>Hot Coco</h2>
             <ul >
                 <li>280 xcd</li> 
-                <input  id='q-menu2' type='number' min='0'  placeholder='Qty'></input>
+                <input  id='q-menu2' type='number' min='0' placeholder='Qty'></input>
              
             </ul>
 
             <h2 className='menu3'>Ice Cream Cake</h2>
             <ul >
                 <li>500 xcd</li>
-                <input  id='q-menu3' type='number' min='0' placeholder='Qty'></input>
+                <input  id='q-menu3' type='number' min='0'placeholder='Qty'></input>
 
                 
              
