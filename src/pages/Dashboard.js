@@ -208,6 +208,7 @@ const Dashboard = () => {
 
 
 const [show, setShow] = useState(true)
+
 const controlNavbar = () => {
   if (window.scrollY > 100){
     setShow(false)
@@ -228,7 +229,7 @@ const controlNavbar = () => {
   return (
 
     <div className="dashboard">
-    {show && <Nav></Nav>}
+    {show && <Nav className='nav'></Nav>}
       <h1 className='dashboard-title'>QUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
@@ -285,7 +286,7 @@ const controlNavbar = () => {
       <button className="open-button" onClick={openForm}>Add queue</button>
 
 <div className="form-popup" id="myForm">
-  <form action="/action_page.php" autocomplete='off' onSubmit={handleSubmit} className="form-container">
+  <form action="/action_page.php" autoComplete='off' onSubmit={handleSubmit} className="form-container">
     <h2>Add queue</h2>
 
     <input className='customer-name-d' name='name' type='text' placeholder='Name' ></input><br/>
