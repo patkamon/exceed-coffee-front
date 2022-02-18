@@ -90,3 +90,16 @@
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.modal-content input {
+  background-color: green;
+  border: white;
+  margin-top: 5px;
+}
+::placeholder {
+  text-align: center;
+}
+
+.modal-content p {
+  margin-left: 60px;
+}
