@@ -21,7 +21,7 @@ export async function checkCurrentQueue() {
 export async function checkCurrentPPL() {
   // check current amount of ppl in cafe
   const res = await axios.get(
-    'https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/get_number_sit'
+    'https://ecourse.cpe.ku.ac.th/exceed01/api/stamp04/2/get_number_sit'
   )
   return res.data
 }

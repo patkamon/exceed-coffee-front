@@ -39,6 +39,11 @@ const Home = () => {
     }, 60000)
   }, [])
 
+  let new2 = (pplDetail.all_sit - pplDetail.now_sit) / pplDetail.all_sit
+  if (new2 < 0) {
+    new2 = 0
+  }
+
   return (
     <div className="home">
       <div className="container">
@@ -50,8 +55,9 @@ const Home = () => {
 
         <p>
           {' '}
-          available seats: {pplDetail.all_sit - pplDetail.now_sit}/
-          {pplDetail.all_sit}
+          {/* available seats: {pplDetail.all_sit - pplDetail.now_sit}/
+          {pplDetail.all_sit} */}
+          available seats: {new2}
           <br />
           current queue: {queueDetail.now_queue}
           <br />
@@ -62,7 +68,7 @@ const Home = () => {
 
         <div className="button">
           <a href="/form" className="cta">
-            <span>Click me</span>
+            <span>จอง</span>
             <svg width="13px" height="10px" viewBox="0 0 13 10">
               <path d="M1,5 L11,5"></path>
               <polyline points="8 1 12 5 8 9"></polyline>
