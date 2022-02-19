@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from '../contexts/AuthProvider'
 import { queueLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
@@ -7,9 +7,7 @@ import './style/Nav.css'
 import './style/Form.css'
 import Nav from '../components/Nav'
 
-
 const Form = () => {
-
   const { setQueueInfo } = useAuth()
   const [error,setError] = useState()
 
@@ -33,6 +31,10 @@ const Form = () => {
      
 
 
+    // wating for backend
+    queueLogin(data).then((d) => {
+      setQueueInfo(data.phone)
+    })
   }
 
   return (

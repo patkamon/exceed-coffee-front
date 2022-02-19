@@ -8,15 +8,11 @@ import './style/Nav.css'
 
 
 const Home = () => {
-
-  const [seat,setSeat] = useState({})
-  const [queueDetail , setQueueDetail] = useState({})
+  const [seat, setSeat] = useState({})
+  const [queueDetail, setQueueDetail] = useState({})
   const [pplDetail, setPPLDetail] = useState({})
 
-
-
   useEffect(() => {
-
     //first load
     checkCurrentQueue().then((data) => {
       setQueueDetail(data)
@@ -27,7 +23,7 @@ const Home = () => {
 
     // do every 10sec
     const checkQ = setInterval(() => {
-      console.log('10sec passed');
+      console.log('10sec passed')
       checkCurrentQueue().then((data) => {
         setQueueDetail(data)
       })
@@ -35,19 +31,16 @@ const Home = () => {
       checkCurrentPPL().then((data) => {
         setPPLDetail(data)
       })
-    }, 10000);
+    }, 10000)
 
     // auto logout for admin in 1 min
     const adminAutoLogout = setInterval(() => {
-      console.log('1min passed');
-      if (localStorage.getItem("token") != null){
-        localStorage.removeItem("token")
+      console.log('1min passed')
+      if (localStorage.getItem('token') != null) {
+        localStorage.removeItem('token')
       }
-    }, 60000);
-  
-  
+    }, 60000)
   }, [])
-  
 
   return (
     <div className='home'>
@@ -61,13 +54,19 @@ const Home = () => {
         {/* {seat.current}/{seat.limit}<br/>
         39/40<br/>  */}
 
+        <p>
+          {' '}
+          available seats: {pplDetail.all_sit - pplDetail.now_sit}/
+          {pplDetail.all_sit}
+          <br />
+          current queue: {queueDetail.now_queue}
+          <br />
+          waiting queue(s): {queueDetail.wait_queue}{' '}
+        </p>
+        <br />
+        <div className="wall"></div>
 
-        <p> available seats: {pplDetail.all_sit - pplDetail.now_sit}/{pplDetail.all_sit}<br/>
-        current queue: {queueDetail.now_queue}<br/>
-        waiting queue(s): {queueDetail.wait_queue} </p><br/>
-        <div className='wall'></div>
-        
-        <div className='button'>
+        <div className="button">
           <a href="/form" className="cta">
             <span>Click me</span>
             <svg width="13px" height="10px" viewBox="0 0 13 10">
@@ -76,7 +75,6 @@ const Home = () => {
             </svg>
           </a>
         </div>
-
       </div>
 
 
