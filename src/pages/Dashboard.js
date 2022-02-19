@@ -79,6 +79,7 @@ const Dashboard = () => {
     getQueueList(token_t)
       .then((data) => {
         setQueueList(data)
+        // console.log('token is', token_t)
       })
       .catch((e) => {
         console.log(e)
