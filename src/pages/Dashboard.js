@@ -78,6 +78,12 @@ const Dashboard = () => {
 
 
   useEffect(() => {
+    const token_t = JSON.parse(localStorage.getItem("token"))
+    setToken(token_t)
+    getQueueList(token_t).then((data)=> {
+      setQueueList(data)
+    })
+
 
     const update = setInterval(()=>{
     const token_t = JSON.parse(localStorage.getItem("token"))

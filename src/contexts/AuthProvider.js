@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
 
   const queueLogout = () => {
     // localStorage.removeItem("user")
-    localStorage.removeItem('queue')
+    localStorage.removeItem('phone')
     // setUser({})
     setQueue()
     navigate('/home')

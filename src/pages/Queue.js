@@ -10,10 +10,30 @@ import './style/Queue.css'
 const Queue = () => {
   const { queue, queueLogout } = useAuth()
   const [currentQ, setCurrentQ] = useState([])
-  // const [currentQ, setCurrentQ] = useState()
-  // const [currentName, setCurrentName] = useState()
-  // const [currentTel, setCurrentTel] = useState()
-  // const [currentAmount, setCurrentAmount] = useState()
+
+  const [phone, setPhone] = useState()
+ 
+  useEffect(() => {
+    const phone_t = JSON.parse(localStorage.getItem("phone"))
+    setPhone(phone_t)
+      checkQueueExist(phone_t).then(()=>{
+      }).catch((e)=>{
+        console.log(e)
+        queueLogout()
+      })
+
+    const update = setInterval(()=>{
+    const phone_t = JSON.parse(localStorage.getItem("phone"))
+    setPhone(phone_t)
+      checkQueueExist(phone_t).then(()=>{
+      }).catch((e)=>{
+        console.log(e)
+        queueLogout()
+      })
+    },2000)},[])
+
+
+
 
   useEffect(() => {
     const phone = JSON.parse(localStorage.getItem('phone'))
@@ -41,18 +61,29 @@ const Queue = () => {
   // console.log('currentQ name is', currentQ.name)
   return (
     <div className="queue">
+      <Nav></Nav>
       <div className="container">
+        
         <div className="circle-container">
           <div class="numberCircle">{currentQ[1]}</div>
         </div>
-        <div>Name: {currentQ[0]}</div>
-        <div>Phone: {currentQ[2]}</div>
-        <div>Seat: {currentQ[3]}</div>
+
+
+        <div  className='detail'>
+        <p>Name: {currentQ[0]}</p>
+        <p>Tel: {currentQ[2]}</p>
+        <p>Amount: {currentQ[3]}</p>
+        </div>
+
         {/* {currentQ} */}
         {/* No. 3 { queue[0] } <br/>
       ... queue ahead.
       status: pending. */}
       </div>
+
+      
+
+
     </div>
   )
 }
