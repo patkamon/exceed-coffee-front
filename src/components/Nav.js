@@ -123,7 +123,7 @@ const Nav = () => {
       
           {locate === '/home' && <a className="linkk" href="/login">ADMIN</a>}
           {locate === '/dashboard' && <div className='dropdown'>
-          <button className="dropbtn">Option
+          <button className="dropbtn">OPTION
       <i className="fa fa-caret-down"></i>  </button>
 
      
@@ -154,7 +154,7 @@ const Nav = () => {
 </div>
       
       </div>}
-      {(order&& locate!=='/dashboard') &&  <a className="linkk" href="/queue">Queue</a>}
+      {(order&& locate!=='/dashboard') &&  <a className="linkk" href="/queue">QUEUE</a>}
 
 
 
