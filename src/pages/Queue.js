@@ -7,20 +7,21 @@ import './style/Queue.css'
 
 const Queue = () => {
   const { queue, queueLogout } = useAuth()
-
-  const [currentQ, setCurrentQ] = useState()
-  const [currentName, setCurrentName] = useState()
-  const [currentTel, setCurrentTel] = useState()
-  const [currentAmount, setCurrentAmount] = useState()
+  const [currentQ, setCurrentQ] = useState([])
+  // const [currentQ, setCurrentQ] = useState()
+  // const [currentName, setCurrentName] = useState()
+  // const [currentTel, setCurrentTel] = useState()
+  // const [currentAmount, setCurrentAmount] = useState()
 
   useEffect(() => {
     const phone = localStorage.getItem('number').slice(1, 13)
     checkQueueExist(phone).then((data) => {
       console.log(data)
-      setCurrentName(data.name)
-      setCurrentQ(data.queue_number)
-      setCurrentTel(data.phone)
-      setCurrentAmount(data.willsit)
+      setCurrentQ([data.name, data.queue_number, data.phone, data.willsit])
+      // setCurrentName(data.name)
+      // setCurrentQ(data.queue_number)
+      // setCurrentTel(data.phone)
+      // setCurrentAmount(data.willsit)
     })
     console.log(currentQ)
     // console.log('currentQ is', currentQ.queue_number)
@@ -40,11 +41,11 @@ const Queue = () => {
     <div className="queue">
       <div className="container">
         <div className="circle-container">
-          <div class="numberCircle">{currentQ}</div>
+          <div class="numberCircle">{currentQ[1]}</div>
         </div>
-        <div>Name: {currentName}</div>
-        <div>Tel: {currentTel}</div>
-        <div>Amount: {currentAmount}</div>
+        <div>Name: {currentQ[0]}</div>
+        <div>Tel: {currentQ[2]}</div>
+        <div>Amount: {currentQ[3]}</div>
         {/* {currentQ} */}
         {/* No. 3 { queue[0] } <br/>
       ... queue ahead.

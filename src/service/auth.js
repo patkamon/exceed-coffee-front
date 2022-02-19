@@ -9,7 +9,6 @@ export async function adminLogin(obj) {
     }
   }
   data = data.join('&')
-  console.log('data is', data)
   const res = await axios.post(
     'https://ecourse.cpe.ku.ac.th/exceed01/api/login',
     data

@@ -18,7 +18,6 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/form" element={<Form />} />
           <Route path="/queue" element={<Queue />} />
-
           <Route path="*" element={<Navigate to="home" />} />
         </Routes>
       </AuthProvider>
