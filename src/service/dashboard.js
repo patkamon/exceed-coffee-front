@@ -6,18 +6,22 @@ export async function getQueueList(token) {
     'https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/getqueue',
     { headers: { Authorization: `Bearer ${token}` } }
   )
+
   return res.data
 }
 
-
-export async function removeQueue(token,no) {
-    const res = await axios.delete(`https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/deletequeue/${no}`,{ headers: {"Authorization" : `Bearer ${token}`} })
-    return res.data
+export async function removeQueue(token, no) {
+  const res = await axios.delete(
+    `https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/deletequeue/${no}`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  )
+  return res.data
 }
 
 export async function clearAllQueue(token) {
-    const res = await axios.delete(`https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/clearqueue`,{ headers: {"Authorization" : `Bearer ${token}`} })
-    return res.data
+  const res = await axios.delete(
+    `https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/clearqueue`,
+    { headers: { Authorization: `Bearer ${token}` } }
+  )
+  return res.data
 }
-
-
