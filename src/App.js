@@ -13,7 +13,6 @@ import Order from './pages/Order';
 function App() {
   return (
     <div className="App">
-     
       <AuthProvider>
         <Routes>
           <Route path="/home" element={<Home />} />
@@ -26,8 +25,6 @@ function App() {
           <Route path="*" element={<Navigate to="home" />} />
         </Routes>
       </AuthProvider>
-
-
     </div>
   )
 }

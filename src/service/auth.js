@@ -1,15 +1,18 @@
-import axios from "axios"
+import axios from 'axios'
 
 export async function adminLogin(obj) {
   // change format from json object to x-www-urlencoded
-  var data = [];
+  var data = []
   for (var key in obj) {
-         if (obj.hasOwnProperty(key)) {
-               data.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]))                  
-     }
+    if (obj.hasOwnProperty(key)) {
+      data.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]))
     }
-  data= data.join("&");
-  const res = await axios.post("https://ecourse.cpe.ku.ac.th/exceed01/api/login", data)
+  }
+  data = data.join('&')
+  const res = await axios.post(
+    'https://ecourse.cpe.ku.ac.th/exceed01/api/login',
+    data
+  )
   return res.data
 }
 

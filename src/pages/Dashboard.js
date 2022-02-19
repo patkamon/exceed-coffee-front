@@ -7,39 +7,25 @@ import { Navigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 
 
-import "./style/Dashboard.scss"
+import './style/Dashboard.scss'
 import { getQueueList, removeQueue } from '../service/dashboard'
 import Collapsible from 'react-collapsible'
 import { getObjForm } from '../utils/form'
 import { queueLogin } from '../service/auth'
-
+import { checkOrder } from '../service/order'
 
 const Dashboard = () => {
 
- 
+  const [collap1, setCollap1] = useState({})
+  const [collap2, setCollap2] = useState({})
+  const [collap3, setCollap3] = useState({})
+  const [collap4, setCollap4] = useState({})
+
+
   const [token, setToken] = useState()
 
-  // useEffect(() => {
-  //   console.log(token)
-  //   if (token) {
-  //     console.log("you have token")
-  //   }else{
-  //     console.log(token,'here')
-  //     adminLogout();
-  //   }
-  // },[])
-
-  // return (
-    
-    
-//     <div>Dashboard
-//       <div class="topnav">
-//   <a class="active" href="/home">STARBOOK</a>
-// </div>
-
-
   const [todos, setTodos] = useState(() => {
-  const savedTodos = localStorage.getItem('todos')
+    const savedTodos = localStorage.getItem('todos')
 
     if (savedTodos) {
       return JSON.parse(savedTodos)
@@ -73,22 +59,22 @@ const Dashboard = () => {
   // useEffect(() => {
   //   localStorage.setItem('todos', JSON.stringify(todos))
   // }, [todos])
-  const {adminLogout, setAdminInfo} = useAuth()
-  
-  const [error, setError] = useState()
+  const { adminLogout, setAdminInfo } = useAuth()
 
+  const [error, setError] = useState()
 
   useEffect(() => {
     const checkToken = setInterval(()=>{
+      let isMounted = true;   
       const token_t = JSON.parse(localStorage.getItem("token"))
-      if (token_t === null){
-        console.log('hi')
+      if (token_t === null && isMounted){
         setToken()
         adminLogout()
+        isMounted = false;
       }
     }
     ,10000)
-  },[])
+  },[adminLogout])
 
 
   useEffect(() => {
@@ -96,44 +82,55 @@ const Dashboard = () => {
     setToken(token_t)
     getQueueList(token_t).then((data)=> {
       setQueueList(data)
-    }).catch((e) =>{
-      console.log(e)
-      setToken()
-      adminLogout()
     })
 
-  },[queueList])
+
+    const update = setInterval(()=>{
+    const token_t = JSON.parse(localStorage.getItem("token"))
+    setToken(token_t)
+    getQueueList(token_t).then((data)=> {
+      setQueueList(data)
+    
+    })},2000)
+    // .catch((e) =>{
+    //   console.log(e)
+    //   console.log('autologout')
+    //   setToken()
+    //   adminLogout()
+    // })
+   
+  },[])
 
 
-  function handleInputChange(e) {
-    setTodo(e.target.value)
-  }
+  // function handleInputChange(e) {
+  //   setTodo(e.target.value)
+  // }
 
-  function handleTableChange(e) {
-    setTable(e.target.value)
-  }
-  function handleTelChange(e) {
-    setTel(e.target.value)
-  }
-  function handleFormSubmit(e) {
-    e.preventDefault()
+  // function handleTableChange(e) {
+  //   setTable(e.target.value)
+  // }
+  // function handleTelChange(e) {
+  //   setTel(e.target.value)
+  // }
+  // function handleFormSubmit(e) {
+  //   e.preventDefault()
 
-    if (todo !== '') {
-      setTodos([
-        ...todos,
-        {
-          id: todos.length + 1,
-          text: todo.trim(),
-          table: table,
-          tel: tel,
-        },
-      ])
-    }
+  //   if (todo !== '') {
+  //     setTodos([
+  //       ...todos,
+  //       {
+  //         id: todos.length + 1,
+  //         text: todo.trim(),
+  //         table: table,
+  //         tel: tel,
+  //       },
+  //     ])
+  //   }
 
-    setTodo('')
-    setTable('')
-    setTel('')
-  }
+  //   setTodo('')
+  //   setTable('')
+  //   setTel('')
+  // }
 
   function handleDeleteClick(id) {
     const removeItem = todos.filter((todo) => {
@@ -162,49 +159,42 @@ const Dashboard = () => {
     handleUpdateTodo(currentTodo.id, currentTodo)
   }
 
-
-  function clickBTN(ob){
+  function clickBTN(ob) {
     console.log(ob.target.value)
-    if (window.confirm(`Are you sure to delete queue: ${ob.target.value}`)) {
-     
-      removeQueue(token,ob.target.value)
-      getQueueList(token).then((data)=> {
+    if (window.confirm(`Are you sure to delete queue: ${ob.target.value[0]}`)) {
+      removeQueue(token, ob.target.value[0])
+      getQueueList(token).then((data) => {
         setQueueList(data)
       })
       console.log('deleted')
-
     } else {
       console.log('cancel')
     }
-
   }
 
   function openForm() {
-    document.getElementById("myForm").style.display = "block";
+    document.getElementById('myForm').style.display = 'block'
   }
-  
+
   function closeForm() {
-    document.getElementById("myForm").style.display = "none";
+    document.getElementById('myForm').style.display = 'none'
   }
-  
 
   function handleSubmit(e) {
     e.preventDefault()
     const data = getObjForm(e.target)
-    console.log(data)
 
     // wating for backend
     queueLogin(data)
-    .then((data) => {
-      console.log(data)
-    }).catch((e)=>{
-      if (e.response.status=== 406){
-        setError('this phone number already in queue!')
-      }
-    })
-
-}
-
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((e) => {
+        if (e.response.status === 406) {
+          setError('this phone number already in queue!')
+        }
+      })
+  }
 
 
 const [show, setShow] = useState(true)
@@ -224,6 +214,48 @@ const controlNavbar = () => {
       window.removeEventListener('scroll',controlNavbar)
     }
   },[])
+
+  //get order detail
+  function clickCollapsible(e) {
+    checkOrder(e).then((data)=>{
+      console.log('here',data)
+      setCollap1(prevState => ({
+        ...prevState,
+        [e]: ['Cappucino '+ data.cappucino]
+      }))
+      setCollap2(prevState => ({
+        ...prevState,
+        [e]: ['Hot CoCo '+data.hot_coco]
+      }))
+      setCollap3(prevState => ({
+        ...prevState,
+        [e]: ['Ice Cream Cake '+ data.ice_cream_cake,]
+      }))
+      setCollap4(prevState => ({
+        ...prevState,
+        [e]: ['Already Pay: '+ data.already_pay.toString()]
+      }))
+    }).catch(()=>{
+      setCollap1(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap2(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap3(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap4(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      
+    }
+    )}
+ 
 
 
   return (
@@ -271,9 +303,16 @@ const controlNavbar = () => {
       {queueList && queueList.map(d => (
               <div className='list'>
 
-                <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
-                QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
-      </p></Collapsible>
+                <Collapsible className='btn-col' key={d.phone} trigger={d.name} onOpen={() => clickCollapsible(d.phone)}><p>
+                QUEUE NO. {d.queue_number} <br/>NAME: {d.name}<br/> PHONE: {d.phone} <br/>AMOUNT: {d.willsit}
+      </p>
+      {collap2[d.phone] && <p>{collap1[d.phone]}<br/>
+      {collap2[d.phone]}<br/>
+      {collap3[d.phone]}<br/>
+      {collap4[d.phone]}</p>}
+
+      {!collap2[d.phone] && <p>Not Order Yet</p>}
+      </Collapsible>
                 <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
                 <p className='close'>X</p>
 
@@ -308,6 +347,58 @@ const controlNavbar = () => {
 
         <div className='last'></div>
 
+      <button className="open-button" onClick={openForm}>
+        Add queue
+      </button>
+
+      <div className="form-popup" id="myForm">
+        <form
+          action="/action_page.php"
+          autocomplete="off"
+          onSubmit={handleSubmit}
+          className="form-container"
+        >
+          <h2>Add queue</h2>
+
+          <input
+            className="customer-name-d"
+            name="name"
+            type="text"
+            placeholder="Name"
+          ></input>
+          <br />
+          <input
+            className="phone-number-d"
+            name="phone"
+            type="tel"
+            placeholder="ex.088-777-3333"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            required
+          />
+          <br />
+
+          <input
+            className="num-seat-d"
+            name="willsit"
+            type="number"
+            min="1"
+            max="8"
+            placeholder="seat"
+            required
+          ></input>
+          <button className="submit-btn" type="submit" hidden>
+            Submit
+          </button>
+
+          <h5>{error}</h5>
+          <button type="submit" className="btn">
+            Add
+          </button>
+          <button type="button" className="btn cancel" onClick={closeForm}>
+            Close
+          </button>
+        </form>
+      </div>
     </div>
     
 

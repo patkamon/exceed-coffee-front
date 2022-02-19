@@ -1,11 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
-import { useNavigate, useLocation } from "react-router-dom"
+import React, { createContext, useContext, useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 
 const AuthContext = createContext({})
 
 const AuthProvider = ({ children }) => {
-
-//   const [user, setUser] = useState({})
+  //   const [user, setUser] = useState({})
   const [token, setToken] = useState()
   const [queue, setQueue] = useState({})
   const location = useLocation()
@@ -24,13 +23,12 @@ const AuthProvider = ({ children }) => {
     // localStorage.removeItem("user")
     localStorage.removeItem('token')
     // setUser({})
-
     setToken()
-    navigate("/home")
+    navigate('/home')
   }
 
   const setQueueInfo = (tel) => {
-    localStorage.setItem("tel", JSON.stringify(tel))
+    localStorage.setItem('phone', JSON.stringify(tel))
     setQueue(tel)
     // setUser(user)
     navigate('/queue')
@@ -38,39 +36,35 @@ const AuthProvider = ({ children }) => {
 
   const queueLogout = () => {
     // localStorage.removeItem("user")
-    localStorage.removeItem('queue')
+    localStorage.removeItem('phone')
     // setUser({})
     setQueue()
-    navigate("/home")
+    navigate('/home')
   }
-
-
-
-  
 
   useEffect(() => {
     // const oldUser = localStorage.getItem("user")
 
-    const oldAdmin = localStorage.getItem("token")
-    const oldQueue = localStorage.getItem("queue")
+    const oldAdmin = localStorage.getItem('token')
+    const oldQueue = localStorage.getItem('queue')
     if (oldAdmin !== null) {
-    //   setUser(JSON.parse(oldUser))
+      //   setUser(JSON.parse(oldUser))
       setToken(JSON.parse(oldAdmin))
-      if (location.pathname.toString() === '/login'){
+      if (location.pathname.toString() === '/login') {
         console.log('already login')
-        navigate("/dashboard")
+        navigate('/dashboard')
       }
     } else if (oldQueue) {
       setToken(JSON.parse(oldQueue))
-    } else if (oldAdmin === null && location.pathname.toString() === '/dashboard') {
+    } else if (
+      oldAdmin === null &&
+      location.pathname.toString() === '/dashboard'
+    ) {
       console.log('im hacker')
-      navigate("/home")
+      navigate('/home')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-
-
 
   return (
     <AuthContext.Provider
