@@ -20,25 +20,6 @@ const Dashboard = () => {
   const [collap, setCollap] = useState({})
   const [token, setToken] = useState()
 
-  // useEffect(() => {
-  //   console.log(token)
-  //   if (token) {
-  //     console.log("you have token")
-  //   }else{
-  //     console.log(token,'here')
-  //     adminLogout();
-  //   }
-  // },[])
-
-  // return (
-    
-    
-//     <div>Dashboard
-//       <div class="topnav">
-//   <a class="active" href="/home">STARBOOK</a>
-// </div>
-
-
   const [todos, setTodos] = useState(() => {
   const savedTodos = localStorage.getItem('todos')
 
@@ -81,59 +62,68 @@ const Dashboard = () => {
 
   useEffect(() => {
     const checkToken = setInterval(()=>{
+      let isMounted = true;   
       const token_t = JSON.parse(localStorage.getItem("token"))
-      if (token_t === null){
+      if (token_t === null && isMounted){
         setToken()
+        console.log('token equal to null')
         adminLogout()
+        isMounted = false;
       }
     }
     ,10000)
-  },[])
+  },[adminLogout])
 
 
   useEffect(() => {
+
+    const update = setInterval(()=>{
     const token_t = JSON.parse(localStorage.getItem("token"))
+    console.log(token_t)
     setToken(token_t)
     getQueueList(token_t).then((data)=> {
       setQueueList(data)
-    }).catch((e) =>{
-      console.log('autologout')
-      setToken()
-      adminLogout()
-    })
+    
+    })},2000)
+    // .catch((e) =>{
+    //   console.log(e)
+    //   console.log('autologout')
+    //   setToken()
+    //   adminLogout()
+    // })
+   
+  },[])
 
-  },[queueList])
 
+  // function handleInputChange(e) {
+  //   setTodo(e.target.value)
+  // }
 
-  function handleInputChange(e) {
-    setTodo(e.target.value)
-  }
+  // function handleTableChange(e) {
+  //   setTable(e.target.value)
+  // }
+  // function handleTelChange(e) {
+  //   setTel(e.target.value)
+  // }
+  // function handleFormSubmit(e) {
+  //   e.preventDefault()
 
-  function handleTableChange(e) {
-    setTable(e.target.value)
-  }
-  function handleTelChange(e) {
-    setTel(e.target.value)
-  }
-  function handleFormSubmit(e) {
-    e.preventDefault()
+  //   if (todo !== '') {
+  //     setTodos([
+  //       ...todos,
+  //       {
+  //         id: todos.length + 1,
+  //         text: todo.trim(),
+  //         table: table,
+  //         tel: tel,
+  //       },
+  //     ])
+  //   }
 
-    if (todo !== '') {
-      setTodos([
-        ...todos,
-        {
-          id: todos.length + 1,
-          text: todo.trim(),
-          table: table,
-          tel: tel,
-        },
-      ])
-    }
-
-    setTodo('')
-    setTable('')
-    setTel('')
-  }
+  //   setTodo('')
+  //   setTable('')
+  //   setTel('')
+  // }
 
   function handleDeleteClick(id) {
     const removeItem = todos.filter((todo) => {
