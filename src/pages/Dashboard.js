@@ -17,7 +17,12 @@ import { checkOrder } from '../service/order'
 
 const Dashboard = () => {
 
-  const [collap, setCollap] = useState({})
+  const [collap1, setCollap1] = useState({})
+  const [collap2, setCollap2] = useState({})
+  const [collap3, setCollap3] = useState({})
+  const [collap4, setCollap4] = useState({})
+
+
   const [token, setToken] = useState()
 
   const [todos, setTodos] = useState(() => {
@@ -66,7 +71,6 @@ const Dashboard = () => {
       const token_t = JSON.parse(localStorage.getItem("token"))
       if (token_t === null && isMounted){
         setToken()
-        console.log('token equal to null')
         adminLogout()
         isMounted = false;
       }
@@ -79,7 +83,6 @@ const Dashboard = () => {
 
     const update = setInterval(()=>{
     const token_t = JSON.parse(localStorage.getItem("token"))
-    console.log(token_t)
     setToken(token_t)
     getQueueList(token_t).then((data)=> {
       setQueueList(data)
@@ -218,13 +221,41 @@ const controlNavbar = () => {
   //get order detail
   function clickCollapsible(e) {
     checkOrder(e).then((data)=>{
-      console.log(data)
-      setCollap(prevState => ({
+      console.log('here',data)
+      setCollap1(prevState => ({
         ...prevState,
-        [e]: data.cappucino
+        [e]: ['Cappucino '+ data.cappucino]
       }))
-    console.log(collap)
+      setCollap2(prevState => ({
+        ...prevState,
+        [e]: ['Hot CoCo '+data.hot_coco]
+      }))
+      setCollap3(prevState => ({
+        ...prevState,
+        [e]: ['Ice Cream Cake '+ data.ice_cream_cake,]
+      }))
+      setCollap4(prevState => ({
+        ...prevState,
+        [e]: ['Already Pay: '+ data.already_pay.toString()]
+      }))
     }).catch(()=>{
+      setCollap1(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap2(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap3(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      setCollap4(prevState => ({
+        ...prevState,
+        [e]: null
+      }))
+      
     }
     )}
  
@@ -276,9 +307,14 @@ const controlNavbar = () => {
               <div className='list'>
 
                 <Collapsible className='btn-col' key={d.phone} trigger={d.name} onOpen={() => clickCollapsible(d.phone)}><p>
-                QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
+                QUEUE NO. {d.queue_number} <br/>NAME: {d.name}<br/> PHONE: {d.phone} <br/>AMOUNT: {d.willsit}
       </p>
-      {/* <p>{collap.d.phone}</p> */}
+      {collap2[d.phone] && <p>{collap1[d.phone]}<br/>
+      {collap2[d.phone]}<br/>
+      {collap3[d.phone]}<br/>
+      {collap4[d.phone]}</p>}
+
+      {!collap2[d.phone] && <p>Not Order Yet</p>}
       </Collapsible>
                 <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
                 <p className='close'>X</p>
