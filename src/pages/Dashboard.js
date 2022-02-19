@@ -157,8 +157,8 @@ const Dashboard = () => {
 
   function clickBTN(ob) {
     console.log(ob.target.value)
-    if (window.confirm(`Are you sure to delete queue: ${ob.target.value[0]}`)) {
-      removeQueue(token, ob.target.value[0])
+    if (window.confirm(`Are you sure to delete queue: ${ob.target.value}`)) {
+      removeQueue(token, ob.target.value)
       getQueueList(token).then((data) => {
         setQueueList(data)
       })
