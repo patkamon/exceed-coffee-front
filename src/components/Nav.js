@@ -14,6 +14,7 @@ const Nav = () => {
     const [warn1,setWarn1] = useState()
     const [warn2,setWarn2] = useState()
 
+    const [order,setOrder] = useState()
   
 
 
@@ -24,6 +25,7 @@ const Nav = () => {
 
     useEffect(() => {
         setLocate(location.pathname.toString())
+        setOrder(localStorage.getItem('phone'))
     },[])
 
     const {setAdminInfo} = useAuth()
@@ -104,10 +106,15 @@ const Nav = () => {
     <div>
 <div className="topnav">
           <a className="active" href="/home">STARBOOK</a>
+      
           {locate === '/home' && <a className="linkk" href="/login">ADMIN</a>}
           {locate === '/dashboard' && <div className='dropdown'>
           <button className="dropbtn">Option
       <i className="fa fa-caret-down"></i>  </button>
+
+     
+
+
 
       <div className="dropdown-content">
       <input type='submit' onClick={clearQueue} value='clear all' ></input>
@@ -133,6 +140,7 @@ const Nav = () => {
 </div>
       
       </div>}
+      {order && <a className="linkk" href="/queue">Queue</a>}
 
 
 
