@@ -1,6 +1,6 @@
 .topnav {
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   position: fixed;
   z-index: 1;
 }
@@ -68,7 +68,7 @@
 
 //The content within the collaspable area
 .Collapsible__contentInner {
-  padding: 10px 80px;
+  padding: 10px 250px;
   border: 1px solid white;
   border-top: 0;
 

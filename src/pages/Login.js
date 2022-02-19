@@ -45,11 +45,15 @@ const Login = () => {
             <input name="password" placeholder="password" type="password" className="signup-text-input" />
             <br/>
 
-            <button type="submit" hidden />
+            <button className='btn-submit' type="submit" disabled='' />
 
           </form>
         </div>
       </div>
+
+      
+
+
 
 
     </div>
