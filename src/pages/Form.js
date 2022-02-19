@@ -11,39 +11,35 @@ import { checkQueueExist } from '../service/queue'
 
 const Form = () => {
   const { setQueueInfo } = useAuth()
-  const [warn1,setWarn1] = useState()
-  const [warn2,setWarn2] = useState()
+  const [warn1, setWarn1] = useState()
+  const [warn2, setWarn2] = useState()
 
   const location = useLocation()
-  
 
+  const modal = document.getElementById('myModal')
+  const span = document.getElementsByClassName('close-btn')[0]
+  const check = document.getElementsByClassName('check-btn')[0]
 
-  const modal = document.getElementById("myModal");
-  const span = document.getElementsByClassName("close-btn")[0];
-  const check = document.getElementsByClassName("check-btn")[0];
-
-  const [formData,setFormData] = useState()
+  const [formData, setFormData] = useState()
 
   function handleSubmitForm(e) {
-
-      e.preventDefault()
-      const data = getObjForm(e.target)
-      console.log(data)
-      setFormData(data)
-      // show warning 
-      modal.style.display = "block";
-      check.style.display = 'block';
-      // set warn msg
-      setWarn1(`Please confirm your queue with ${data.phone}`)
-      setWarn2(`*** We will call only 3 times ***`)
-      
-    
+    e.preventDefault()
+    const data = getObjForm(e.target)
+    console.log(data)
+    setFormData(data)
+    // show warning
+    modal.style.display = 'block'
+    check.style.display = 'block'
+    // set warn msg
+    setWarn1(`Please confirm your queue with ${data.phone}`)
+    setWarn2(`*** We will call only 3 times ***`)
   }
   //check warning event
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target === check) {
       console.log('click')
       queueLogin(formData)
+
       .then((s) => {
         setWarn1(0)
         setWarn2(0)
@@ -58,16 +54,17 @@ const Form = () => {
           check.style.display = 'none';
         }
       })
+
     }
     if (event.target === modal || event.target === span) {
-      modal.style.display = "none";
+      modal.style.display = 'none'
       setWarn1()
       setWarn2()
-    } 
-    
+    }
   }
 
   return (
+
 
     <div className='form'>
     <Nav></Nav>
@@ -113,22 +110,18 @@ const Form = () => {
 
     </div>
 
+
       {/* warning event */}
       <div id="myModal" className="modal">
-
-          <div className="modal-content">
+        <div className="modal-content">
           <span className="close-btn">&times;</span>
           <span className="check-btn">&#10003;</span>
-          
-        
-          <p className='warn1'>{warn1}</p>
-          <p className ='warn2'>{warn2 && warn2}</p>
+
+          <p className="warn1">{warn1}</p>
+          <p className="warn2">{warn2 && warn2}</p>
         </div>
-
       </div>
- 
     </div>
-
   )
 }
 
