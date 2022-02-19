@@ -160,6 +160,10 @@ const Dashboard = () => {
     console.log(ob.target.value)
     if (window.confirm(`Are you sure to delete queue: ${ob.target.value}`)) {
       removeQueue(token, ob.target.value)
+      if (localStorage.getItem('no') === ob.target.value){
+        localStorage.removeItem('no')
+        localStorage.removeItem('phone')
+      }
       getQueueList(token).then((data) => {
         setQueueList(data)
       })
@@ -167,6 +171,7 @@ const Dashboard = () => {
     } else {
       console.log('cancel')
     }
+
   }
 
   function openForm() {

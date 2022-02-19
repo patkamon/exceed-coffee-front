@@ -5,6 +5,7 @@ import { useAuth } from '../contexts/AuthProvider'
 import '../pages/style/Nav.css'
 import { adminLogin } from '../service/auth'
 import { clearAllQueue } from '../service/dashboard'
+import { checkQueueExist } from '../service/queue'
 const Nav = () => {
 
     const [locate,setLocate] = useState()
@@ -26,6 +27,17 @@ const Nav = () => {
     useEffect(() => {
         setLocate(location.pathname.toString())
         setOrder(localStorage.getItem('phone'))
+
+        // const order = setInterval(()=> {
+        //   checkQueueExist(localStorage.getItem('phone')).then(()=>{
+        //     setOrder("queue")  
+        //   }).catch(()=>{
+        //     setOrder()
+        //   })
+        // },5000)
+
+        
+
     },[])
 
     const {setAdminInfo} = useAuth()
@@ -63,6 +75,8 @@ const Nav = () => {
           setAdminInfo(d.access_token)
           clearAllQueue(d.access_token).then((data)=>{
             console.log('clear success')
+            localStorage.removeItem('no')
+            localStorage.removeItem('phone')
             setWarn1()
             setWarn2()
             modal.style.display = 'none'; 
@@ -80,7 +94,7 @@ const Nav = () => {
           setWarn2('wrong password!! or username')
         })
 
-    
+       
       }
       if (event.target === modal || event.target === span) {
         modal.style.display = "none";
@@ -140,7 +154,7 @@ const Nav = () => {
 </div>
       
       </div>}
-      {order && <a className="linkk" href="/queue">Queue</a>}
+      {(order&& locate!=='/dashboard') &&  <a className="linkk" href="/queue">Queue</a>}
 
 
 

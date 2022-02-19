@@ -27,11 +27,12 @@ const Form = () => {
     const data = getObjForm(e.target)
     console.log(data)
     setFormData(data)
+    console.log(data.phone)
     // show warning
     modal.style.display = 'block'
     check.style.display = 'block'
     // set warn msg
-    setWarn1(`Please confirm your queue with ${data.phone}`)
+    setWarn1(`Please confirm your queue with ${(data.phone).slice(0,3)}-${(data.phone).slice(3,6)}-${(data.phone).slice(6,10)}`)
     setWarn2(`*** We will call only 3 times ***`)
   }
   //check warning event
@@ -62,58 +63,56 @@ const Form = () => {
     }
   }
 
+
+
   return (
-    <div className="form">
-      <Nav></Nav>
 
-      <div className="container">
-        <h1>Starbook Shop</h1>
-        <br />
-        <div className="wall"></div>
 
-        <form onSubmit={handleSubmitForm}>
-          <div className="grid-container">
-            <input
-              className="customer-name"
-              name="name"
-              type="text"
-              placeholder="Name"
-              required
-            ></input>
-            <br />
 
-            <input
-              className="phone-number"
-              name="phone"
-              type="tel"
-              placeholder="ex.088-777-3333"
-              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-              required
-            />
-            <br />
+    <div className='form'>
+    <Nav></Nav>
 
-            <input
-              className="num-seat"
-              name="willsit"
-              type="number"
-              min="1"
-              max="8"
-              placeholder="seat"
-              required
-            ></input>
+    <div className='container'>
+      <h1>Starbook Shop</h1><br />
+      <div className='wall'></div>
 
-            <div className="button">
-              <button className="cta" type="submit" disabled="">
-                <span>SUBMIT</span>
-                <svg width="13px" height="10px" viewBox="0 0 13 10">
-                  <path d="M1,5 L11,5"></path>
-                  <polyline points="8 1 12 5 8 9"></polyline>
-                </svg>
-              </button>
-            </div>
-          </div>
-        </form>
-      </div>
+      <form onSubmit={handleSubmitForm} >
+
+
+        <div className='grid-container'>
+        <input className='customer-name' name='name' type='text' placeholder='Name' required></input><br/>
+     
+        <input className='phone-number' id='phone' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{10}" required/><br/> 
+
+        <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
+  
+        
+        
+
+
+        <div className="button">
+        <button className='cta' type='submit' disabled="">
+            <span>SUBMIT</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
+
+
+
+
+        </div>
+      </form>
+      
+
+
+
+
+    </div>
+
 
       {/* warning event */}
       <div id="myModal" className="modal">

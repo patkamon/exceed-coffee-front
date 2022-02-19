@@ -19,9 +19,11 @@ const Queue = () => {
   useEffect(() => {
     const phone_t = JSON.parse(localStorage.getItem('phone'))
     setPhone(phone_t)
-    checkQueueExist(phone_t)
-      .then(() => {})
-      .catch((e) => {
+
+      checkQueueExist(phone_t).then((d)=>{
+        localStorage.setItem("no",d.queue_number)
+      }).catch((e)=>{
+
         console.log(e)
         queueLogout()
       })
