@@ -16,7 +16,7 @@ const Queue = () => {
   // const [currentAmount, setCurrentAmount] = useState()
 
   useEffect(() => {
-    const phone =  JSON.parse(localStorage.getItem('phone'))
+    const phone = JSON.parse(localStorage.getItem('phone'))
     checkQueueExist(phone).then((data) => {
       console.log(data)
       setCurrentQ([data.name, data.queue_number, data.phone, data.willsit])
@@ -46,8 +46,8 @@ const Queue = () => {
           <div class="numberCircle">{currentQ[1]}</div>
         </div>
         <div>Name: {currentQ[0]}</div>
-        <div>Tel: {currentQ[2]}</div>
-        <div>Amount: {currentQ[3]}</div>
+        <div>Phone: {currentQ[2]}</div>
+        <div>Seat: {currentQ[3]}</div>
         {/* {currentQ} */}
         {/* No. 3 { queue[0] } <br/>
       ... queue ahead.
