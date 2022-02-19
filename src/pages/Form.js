@@ -39,22 +39,21 @@ const Form = () => {
     if (event.target === check) {
       console.log('click')
       queueLogin(formData)
+        .then((s) => {
+          setWarn1(0)
+          setWarn2(0)
+          setQueueInfo(formData.phone)
+        })
+        .catch((e) => {
+          if (e.response.status === 406) {
+            setWarn1('this phone number already in queue!')
+            checkQueueExist(formData.phone).then((data) => {
+              setWarn2(`It was queue number ${data.queue_number}`)
+            })
 
-      .then((s) => {
-        setWarn1(0)
-        setWarn2(0)
-        setQueueInfo(formData.phone)
-      }).catch((e)=>{
-        if (e.response.status=== 406){
-          setWarn1('this phone number already in queue!')
-          checkQueueExist(formData.phone).then((data)=>{
-            setWarn2(`It was queue number ${data.queue_number}`)  
-          })
-          
-          check.style.display = 'none';
-        }
-      })
-
+            check.style.display = 'none'
+          }
+        })
     }
     if (event.target === modal || event.target === span) {
       modal.style.display = 'none'
@@ -64,52 +63,57 @@ const Form = () => {
   }
 
   return (
+    <div className="form">
+      <Nav></Nav>
 
+      <div className="container">
+        <h1>Starbook Shop</h1>
+        <br />
+        <div className="wall"></div>
 
-    <div className='form'>
-    <Nav></Nav>
+        <form onSubmit={handleSubmitForm}>
+          <div className="grid-container">
+            <input
+              className="customer-name"
+              name="name"
+              type="text"
+              placeholder="Name"
+              required
+            ></input>
+            <br />
 
-    <div className='container'>
-      <h1>Starbook Shop</h1><br />
-      <div className='wall'></div>
+            <input
+              className="phone-number"
+              name="phone"
+              type="tel"
+              placeholder="ex.088-777-3333"
+              pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+              required
+            />
+            <br />
 
-      <form onSubmit={handleSubmitForm} >
+            <input
+              className="num-seat"
+              name="willsit"
+              type="number"
+              min="1"
+              max="8"
+              placeholder="seat"
+              required
+            ></input>
 
-
-        <div className='grid-container'>
-        <input className='customer-name' name='name' type='text' placeholder='Name' required></input><br/>
-     
-        <input className='phone-number' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
-
-        <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
-  
-        
-        
-
-
-        <div className="button">
-        <button className='cta' type='submit' disabled="">
-            <span>SUBMIT</span>
-            <svg width="13px" height="10px" viewBox="0 0 13 10">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </button>
-        </div>
-
-
-
-
-
-        </div>
-      </form>
-      
-
-
-
-
-    </div>
-
+            <div className="button">
+              <button className="cta" type="submit" disabled="">
+                <span>SUBMIT</span>
+                <svg width="13px" height="10px" viewBox="0 0 13 10">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
       {/* warning event */}
       <div id="myModal" className="modal">

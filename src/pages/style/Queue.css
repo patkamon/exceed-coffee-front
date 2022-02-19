@@ -43,3 +43,24 @@
   margin-top: 10px;
   font-size: 120%;
 }
+
+.order-btn {
+  margin: 30px 300px;
+  padding: 10px 10px;
+  background-color: #185c37;
+  border: 1px solid white;
+  color: white;
+}
+
+.order-btn:hover {
+  background-color: white;
+  color: #185c37;
+}
+
+.order-warn {
+  margin: 30px 300px;
+  padding: 10px 10px;
+  background-color: #185c37;
+  border: 1px solid white;
+  color: white;
+}

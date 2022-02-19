@@ -18,6 +18,9 @@ export async function adminLogin(obj) {
 
 export async function queueLogin(obj) {
   obj.willsit = parseInt(obj.willsit)
-  const res = await axios.post("https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/insertqueue", obj)
+  const res = await axios.post(
+    'https://ecourse.cpe.ku.ac.th/exceed01/api/pat/1/insertqueue',
+    obj
+  )
   return res.data
 }
