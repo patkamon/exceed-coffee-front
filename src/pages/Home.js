@@ -40,6 +40,10 @@ const Home = () => {
       }
     }, 60000)
   }, [])
+  let avaiSeat = (pplDetail.all_sit - pplDetail.now_sit) / pplDetail.all_sit
+  if (avaiSeat < 0) {
+    avaiSeat = 0
+  }
 
   return (
     <div className="home">
@@ -54,8 +58,7 @@ const Home = () => {
 
         <p>
           {' '}
-          available seats: {pplDetail.all_sit - pplDetail.now_sit}/
-          {pplDetail.all_sit}
+          available seats: {avaiSeat}
           <br />
           current queue: {queueDetail.now_queue}
           <br />
