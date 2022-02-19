@@ -88,14 +88,14 @@ const Dashboard = () => {
 
       getQueueList(token_t).then((data) => {
         setQueueList(data)
-      })
+      }) .catch((e) => {
+          // console.log(e)
+          console.log('autologout')
+          setToken()
+          adminLogout()
+        })
     }, 2000)
-    // .catch((e) => {
-    //   // console.log(e)
-    //   console.log('autologout')
-    //   setToken()
-    //   adminLogout()
-    // })
+    
   }, [])
 
   // function handleInputChange(e) {
