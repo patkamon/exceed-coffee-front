@@ -86,16 +86,17 @@ const Dashboard = () => {
       setToken(token_t)
       console.log(token_t)
 
-      getQueueList(token_t).then((data) => {
-        setQueueList(data)
-      })
+      getQueueList(token_t)
+        .then((data) => {
+          setQueueList(data)
+        })
+        .catch((e) => {
+          // console.log(e)
+          console.log('autologout')
+          setToken()
+          adminLogout()
+        })
     }, 2000)
-    // .catch((e) => {
-    //   // console.log(e)
-    //   console.log('autologout')
-    //   setToken()
-    //   adminLogout()
-    // })
   }, [])
 
   // function handleInputChange(e) {
@@ -157,8 +158,8 @@ const Dashboard = () => {
 
   function clickBTN(ob) {
     console.log(ob.target.value)
-    if (window.confirm(`Are you sure to delete queue: ${ob.target.value[0]}`)) {
-      removeQueue(token, ob.target.value[0])
+    if (window.confirm(`Are you sure to delete queue: ${ob.target.value}`)) {
+      removeQueue(token, ob.target.value)
       getQueueList(token).then((data) => {
         setQueueList(data)
       })

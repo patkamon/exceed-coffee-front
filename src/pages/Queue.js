@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import Nav from '../components/Nav'
 import { useAuth } from '../contexts/AuthProvider'
+import { checkOrder } from '../service/order'
 import { checkQueueExist } from '../service/queue'
 import './style/Nav.css'
 
@@ -12,6 +13,8 @@ const Queue = () => {
   const [currentQ, setCurrentQ] = useState([])
 
   const [phone, setPhone] = useState()
+
+  const [order, setOrder] = useState()
 
   useEffect(() => {
     const phone_t = JSON.parse(localStorage.getItem('phone'))
@@ -33,6 +36,14 @@ const Queue = () => {
           queueLogout()
         })
     }, 2000)
+
+    checkOrder(phone_t)
+      .then(() => {
+        setOrder()
+      })
+      .catch(() => {
+        setOrder('not order yet')
+      })
   }, [])
 
   useEffect(() => {
@@ -73,10 +84,13 @@ const Queue = () => {
           <p>Amount: {currentQ[3]}</p>
         </div>
 
-        {/* {currentQ} */}
-        {/* No. 3 { queue[0] } <br/>
-      ... queue ahead.
-      status: pending. */}
+        {order && (
+          <div class="order-btn">
+            {' '}
+            <a href="/order">Order Now</a>{' '}
+          </div>
+        )}
+        {!order && <div class="order-warn">You're already Order</div>}
       </div>
     </div>
   )

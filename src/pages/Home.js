@@ -30,7 +30,7 @@ const Home = () => {
       checkCurrentPPL().then((data) => {
         setPPLDetail(data)
       })
-    }, 10000)
+    }, 1000)
 
     // auto logout for admin in 1 min
     const adminAutoLogout = setInterval(() => {
@@ -40,10 +40,13 @@ const Home = () => {
       }
     }, 60000)
   }, [])
-  let avaiSeat = (pplDetail.all_sit - pplDetail.now_sit) / pplDetail.all_sit
+  let avaiSeat = pplDetail.all_sit - pplDetail.now_sit
   if (avaiSeat < 0) {
     avaiSeat = 0
+  } else if (avaiSeat > pplDetail.all_sit) {
+    avaiSeat = pplDetail.all_sit
   }
+  console.log(pplDetail)
 
   return (
     <div className="home">
@@ -58,7 +61,7 @@ const Home = () => {
 
         <p>
           {' '}
-          available seats: {avaiSeat}
+          available seats: {avaiSeat} / {pplDetail.all_sit}
           <br />
           current queue: {queueDetail.now_queue}
           <br />
