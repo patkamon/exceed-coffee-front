@@ -7,6 +7,7 @@ import './style/Nav.css'
 import './style/Form.css'
 import Nav from '../components/Nav'
 import { useLocation } from 'react-router-dom'
+import { checkQueueExist } from '../service/queue'
 
 const Form = () => {
   const { setQueueInfo } = useAuth()
@@ -50,7 +51,10 @@ const Form = () => {
       }).catch((e)=>{
         if (e.response.status=== 406){
           setWarn1('this phone number already in queue!')
-          setWarn2()
+          checkQueueExist(formData.phone).then((data)=>{
+            setWarn2(`It was queue number ${data.queue_number}`)  
+          })
+          
           check.style.display = 'none';
         }
       })
@@ -84,6 +88,10 @@ const Form = () => {
         <button className='submit-btn' type='submit' disabled="">Submit</button>
         
         
+
+
+
+
         </div>
       </form>
       
