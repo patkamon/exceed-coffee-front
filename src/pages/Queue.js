@@ -12,28 +12,28 @@ const Queue = () => {
   const [currentQ, setCurrentQ] = useState([])
 
   const [phone, setPhone] = useState()
- 
+
   useEffect(() => {
-    const phone_t = JSON.parse(localStorage.getItem("phone"))
+    const phone_t = JSON.parse(localStorage.getItem('phone'))
     setPhone(phone_t)
-      checkQueueExist(phone_t).then(()=>{
-      }).catch((e)=>{
+    checkQueueExist(phone_t)
+      .then(() => {})
+      .catch((e) => {
         console.log(e)
         queueLogout()
       })
 
-    const update = setInterval(()=>{
-    const phone_t = JSON.parse(localStorage.getItem("phone"))
-    setPhone(phone_t)
-      checkQueueExist(phone_t).then(()=>{
-      }).catch((e)=>{
-        console.log(e)
-        queueLogout()
-      })
-    },2000)},[])
-
-
-
+    const update = setInterval(() => {
+      const phone_t = JSON.parse(localStorage.getItem('phone'))
+      setPhone(phone_t)
+      checkQueueExist(phone_t)
+        .then(() => {})
+        .catch((e) => {
+          console.log(e)
+          queueLogout()
+        })
+    }, 2000)
+  }, [])
 
   useEffect(() => {
     const phone = JSON.parse(localStorage.getItem('phone'))
@@ -63,16 +63,14 @@ const Queue = () => {
     <div className="queue">
       <Nav></Nav>
       <div className="container">
-        
         <div className="circle-container">
           <div class="numberCircle">{currentQ[1]}</div>
         </div>
 
-
-        <div  className='detail'>
-        <p>Name: {currentQ[0]}</p>
-        <p>Tel: {currentQ[2]}</p>
-        <p>Amount: {currentQ[3]}</p>
+        <div className="detail">
+          <p>Name: {currentQ[0]}</p>
+          <p>Tel: {currentQ[2]}</p>
+          <p>Amount: {currentQ[3]}</p>
         </div>
 
         {/* {currentQ} */}
@@ -80,10 +78,6 @@ const Queue = () => {
       ... queue ahead.
       status: pending. */}
       </div>
-
-      
-
-
     </div>
   )
 }
