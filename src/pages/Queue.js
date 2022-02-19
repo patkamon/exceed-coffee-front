@@ -16,7 +16,7 @@ const Queue = () => {
   // const [currentAmount, setCurrentAmount] = useState()
 
   useEffect(() => {
-    const phone = localStorage.getItem('number').slice(1, 13)
+    const phone =  JSON.parse(localStorage.getItem('phone'))
     checkQueueExist(phone).then((data) => {
       console.log(data)
       setCurrentQ([data.name, data.queue_number, data.phone, data.willsit])
