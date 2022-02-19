@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import Nav from '../components/Nav'
 import { checkCurrentPPL, checkCurrentQueue } from '../service/queue'
 
 import './style/Home.css'
+import './style/Nav.css'
+
 
 const Home = () => {
   const [seat, setSeat] = useState({})
@@ -40,10 +43,13 @@ const Home = () => {
   }, [])
 
   return (
-    <div className="home">
-      <div className="container">
-        <h1>Starbook Shop</h1>
-        <br />
+    <div className='home'>
+    <Nav></Nav>
+        
+    
+      
+      <div className='container'>
+        <h1>Starbook Shop</h1><br/>
 
         {/* {seat.current}/{seat.limit}<br/>
         39/40<br/>  */}
@@ -70,6 +76,10 @@ const Home = () => {
           </a>
         </div>
       </div>
+
+
+      
+
     </div>
   )
 }

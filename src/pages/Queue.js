@@ -1,7 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import Nav from '../components/Nav'
 import { useAuth } from '../contexts/AuthProvider'
 import { checkQueueExist } from '../service/queue'
+import './style/Nav.css'
 
 import './style/Queue.css'
 

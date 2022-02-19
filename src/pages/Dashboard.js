@@ -4,6 +4,8 @@ import EditForm from '../components/EditForm'
 import AddTodoForm from '../components/AddTodoForm'
 import { useAuth } from '../contexts/AuthProvider'
 import { Navigate } from 'react-router-dom'
+import Nav from '../components/Nav'
+
 
 import './style/Dashboard.scss'
 import { getQueueList, removeQueue } from '../service/dashboard'
@@ -24,6 +26,7 @@ const Dashboard = () => {
   //   }
   // },[])
 
+
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem('todos')
 
@@ -32,7 +35,8 @@ const Dashboard = () => {
     } else {
       return []
     }
-  })
+  }) 
+
   const [todo, setTodo] = useState('')
   const [table, setTable] = useState('')
   const [tel, setTel] = useState('')
@@ -182,9 +186,30 @@ const Dashboard = () => {
       })
   }
 
+
+const [show, setShow] = useState(true)
+const controlNavbar = () => {
+  if (window.scrollY > 100){
+    setShow(false)
+  } else {
+    setShow(true)
+  }
+}
+
+  useEffect(() => {
+    window.addEventListener('scroll',
+    controlNavbar)
+    return () => {
+      window.removeEventListener('scroll',controlNavbar)
+    }
+  },[])
+
+
   return (
+
     <div className="dashboard">
-      <h1>QUEUE</h1>
+    {show && <Nav></Nav>}
+      <h1 className='dashboard-title'>QUEUE</h1>
       {/* <h1>
         ที่เหลือ คือ 1. คนจองซ้ำกันกรณีเพื่อนจองซ้ำกัน 2.
         ดึงข้อมูลเริ่มต้นจาก database มาใช้
@@ -218,29 +243,49 @@ const Dashboard = () => {
             onDeleteClick={handleDeleteClick}
           />
         ))}
+
       </ul> */}
 
-      <div className="last-element">
-        {queueList &&
-          queueList.map((d) => (
-            <div className="list">
-              <Collapsible className="btn-col" key={d.phone} trigger={d.name}>
-                <p>
-                  QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone}{' '}
-                  AMOUNT: {d.willsit}
-                </p>
-              </Collapsible>
-              <input
-                type="button"
-                className="remove-btn"
-                key={d.queue_number}
-                onClick={clickBTN}
-                value={[d.queue_number, d.phone]}
-              ></input>
-              <p className="close">X</p>
-            </div>
-          ))}
+        <div className='last-element'>
+      {queueList && queueList.map(d => (
+              <div className='list'>
+
+                <Collapsible className='btn-col' key={d.phone} trigger={d.name}><p>
+                QUEUE NO. {d.queue_number} NAME: {d.name} PHONE: {d.phone} AMOUNT: {d.willsit}
+      </p></Collapsible>
+                <input type='button' className='remove-btn' key={d.queue_number} onClick={clickBTN} value={d.queue_number}></input>
+                <p className='close'>X</p>
+
+
+                </div>))}
       </div>
+      
+        
+
+      <button className="open-button" onClick={openForm}>Add queue</button>
+
+<div className="form-popup" id="myForm">
+  <form action="/action_page.php" autocomplete='off' onSubmit={handleSubmit} className="form-container">
+    <h2>Add queue</h2>
+
+    <input className='customer-name-d' name='name' type='text' placeholder='Name' ></input><br/>
+        <input className='phone-number-d' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
+
+        <input className='num-seat-d' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
+        <button className='submit-btn' type='submit' hidden>Submit</button>
+        
+
+
+      <h5>{error}</h5>
+    <button type="submit" className="btn">Add</button>
+    <button type="button" className="btn cancel" onClick={closeForm}>Close</button>
+  </form>
+  </div>
+        
+
+
+
+        <div className='last'></div>
 
       <button className="open-button" onClick={openForm}>
         Add queue
@@ -295,6 +340,10 @@ const Dashboard = () => {
         </form>
       </div>
     </div>
+    
+
+
+
   )
 }
 

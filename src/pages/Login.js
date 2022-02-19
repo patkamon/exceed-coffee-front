@@ -1,8 +1,13 @@
 import React from 'react'
+import Nav from '../components/Nav'
 import { useAuth } from '../contexts/AuthProvider'
 import { adminLogin } from '../service/auth'
 import { getObjForm } from '../utils/form'
+
+
+
 import './style/Login.css'
+
 
 const Login = () => {
 
@@ -23,6 +28,7 @@ const Login = () => {
   return (
 
     <div className='login'>
+    <Nav></Nav>
 
       <div className='container'>
         <h1>STARBOOK</h1>
@@ -44,6 +50,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+
 
     </div>
 
