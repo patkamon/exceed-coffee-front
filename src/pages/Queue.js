@@ -10,10 +10,30 @@ import './style/Queue.css'
 const Queue = () => {
   const { queue, queueLogout } = useAuth()
   const [currentQ, setCurrentQ] = useState([])
-  // const [currentQ, setCurrentQ] = useState()
-  // const [currentName, setCurrentName] = useState()
-  // const [currentTel, setCurrentTel] = useState()
-  // const [currentAmount, setCurrentAmount] = useState()
+
+  const [phone, setPhone] = useState()
+ 
+  useEffect(() => {
+    const phone_t = JSON.parse(localStorage.getItem("phone"))
+    setPhone(phone_t)
+      checkQueueExist(phone_t).then(()=>{
+      }).catch((e)=>{
+        console.log(e)
+        queueLogout()
+      })
+
+    const update = setInterval(()=>{
+    const phone_t = JSON.parse(localStorage.getItem("phone"))
+    setPhone(phone_t)
+      checkQueueExist(phone_t).then(()=>{
+      }).catch((e)=>{
+        console.log(e)
+        queueLogout()
+      })
+    },2000)},[])
+
+
+
 
   useEffect(() => {
     const phone =  JSON.parse(localStorage.getItem('phone'))
