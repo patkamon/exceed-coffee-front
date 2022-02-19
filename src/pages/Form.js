@@ -85,9 +85,21 @@ const Form = () => {
         <input className='phone-number' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
 
         <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
-        <button className='submit-btn' type='submit' disabled="">Submit</button>
+  
         
         
+
+
+        <div className="button">
+        <button className='cta' type='submit' disabled="">
+            <span>SUBMIT</span>
+            <svg width="13px" height="10px" viewBox="0 0 13 10">
+              <path d="M1,5 L11,5"></path>
+              <polyline points="8 1 12 5 8 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
 
 
 
