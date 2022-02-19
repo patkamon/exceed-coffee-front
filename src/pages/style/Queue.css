@@ -7,7 +7,7 @@
 }
 
 .queue .container {
-  margin: 60px auto;
+  margin: 120px auto;
   width: 800px;
   height: 800px;
   /* background-color: white; */
@@ -36,4 +36,10 @@
   text-align: center;
 
   font: 260px Arial, sans-serif;
+}
+
+.detail p {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 120%;
 }

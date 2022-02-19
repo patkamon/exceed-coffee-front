@@ -61,18 +61,27 @@ const Queue = () => {
   // console.log('currentQ name is', currentQ.name)
   return (
     <div className="queue">
+      <Nav></Nav>
       <div className="container">
+        
         <div className="circle-container">
           <div class="numberCircle">{currentQ[1]}</div>
         </div>
-        <div>Name: {currentQ[0]}</div>
-        <div>Tel: {currentQ[2]}</div>
-        <div>Amount: {currentQ[3]}</div>
+
+        <div  className='detail'>
+        <p>Name: {currentQ[0]}</p>
+        <p>Tel: {currentQ[2]}</p>
+        <p>Amount: {currentQ[3]}</p>
+        </div>
         {/* {currentQ} */}
         {/* No. 3 { queue[0] } <br/>
       ... queue ahead.
       status: pending. */}
       </div>
+
+      
+
+
     </div>
   )
 }
