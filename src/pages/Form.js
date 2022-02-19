@@ -6,6 +6,7 @@ import './style/Nav.css'
 
 import './style/Form.css'
 import Nav from '../components/Nav'
+import { useLocation } from 'react-router-dom'
 
 
 const Form = () => {
@@ -14,6 +15,7 @@ const Form = () => {
   const [warn1,setWarn1] = useState()
   const [warn2,setWarn2] = useState()
 
+  const location = useLocation()
   
 
 
@@ -23,7 +25,8 @@ const Form = () => {
 
   const [formData,setFormData] = useState()
 
-  function handleSubmit(e) {
+  function handleSubmitForm(e) {
+
       e.preventDefault()
       const data = getObjForm(e.target)
       console.log(data)
@@ -71,7 +74,7 @@ const Form = () => {
       <h1>Starbook Shop</h1><br />
       <div className='wall'></div>
 
-      <form onSubmit={handleSubmit} >
+      <form onSubmit={handleSubmitForm} >
 
 
         <div className='grid-container'>
@@ -80,7 +83,7 @@ const Form = () => {
         <input className='phone-number' name='phone' type='tel' placeholder='ex.088-777-3333'pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/><br/> 
 
         <input className='num-seat' name='willsit'  type="number" min="1" max="8" placeholder='seat' required></input>
-        <button className='submit-btn' type='submit' hidden>Submit</button>
+        <button className='submit-btn' type='submit' disabled="">Submit</button>
         
         
         </div>

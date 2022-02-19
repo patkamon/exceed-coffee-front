@@ -24,13 +24,12 @@ const AuthProvider = ({ children }) => {
     // localStorage.removeItem("user")
     localStorage.removeItem('token')
     // setUser({})
-
     setToken()
     navigate("/home")
   }
 
   const setQueueInfo = (tel) => {
-    localStorage.setItem("tel", JSON.stringify(tel))
+    localStorage.setItem("phone", JSON.stringify(tel))
     setQueue(tel)
     // setUser(user)
     navigate('/queue')
