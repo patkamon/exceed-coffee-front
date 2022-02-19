@@ -50,7 +50,7 @@
   position: relative;
   top: 30%;
   right: 4px;
-  color: #925338;
+  color: #c74525;
   pointer-events: none;
 }
 
@@ -102,13 +102,13 @@
     top: 10px;
     display: block;
     transition: transform 300ms;
-    color: orange;
+    color: rgb(255, 255, 255);
   }
 
   &.is-open {
     &:after {
       transform: rotateZ(180deg);
-      color: red;
+      color: rgb(201, 108, 20);
     }
   }
 
@@ -130,7 +130,7 @@
 .Collapsible__custom-sibling {
   padding: 5px;
   font-size: 12px;
-  background-color: #cbb700;
+  background-color: #834e12;
   color: black;
 }
 
@@ -177,7 +177,7 @@ h5 {
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
-  background: #cbb700;
+  background: #975f1f;
 }
 
 .form-container input[type="number"] {
@@ -186,13 +186,13 @@ h5 {
   padding: 15px;
   margin: 5px 0 22px 0;
   border: none;
-  background: #cbb700;
+  background: #975f1f;
 }
 
 /* When the inputs get focus, do something */
 .form-container input[type="text"]:focus,
 .form-container input[type="tel"]:focus {
-  background-color: #cbb700;
+  background-color: #754a11;
   outline: none;
 }
 
