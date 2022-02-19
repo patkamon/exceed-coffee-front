@@ -40,22 +40,21 @@ const Form = () => {
     if (event.target === check) {
       console.log('click')
       queueLogin(formData)
+        .then((s) => {
+          setWarn1(0)
+          setWarn2(0)
+          setQueueInfo(formData.phone)
+        })
+        .catch((e) => {
+          if (e.response.status === 406) {
+            setWarn1('this phone number already in queue!')
+            checkQueueExist(formData.phone).then((data) => {
+              setWarn2(`It was queue number ${data.queue_number}`)
+            })
 
-      .then((s) => {
-        setWarn1(0)
-        setWarn2(0)
-        setQueueInfo(formData.phone)
-      }).catch((e)=>{
-        if (e.response.status=== 406){
-          setWarn1('this phone number already in queue!')
-          checkQueueExist(formData.phone).then((data)=>{
-            setWarn2(`It was queue number ${data.queue_number}`)  
-          })
-          
-          check.style.display = 'none';
-        }
-      })
-
+            check.style.display = 'none'
+          }
+        })
     }
     if (event.target === modal || event.target === span) {
       modal.style.display = 'none'
@@ -67,6 +66,7 @@ const Form = () => {
 
 
   return (
+
 
 
     <div className='form'>

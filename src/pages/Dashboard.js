@@ -86,16 +86,17 @@ const Dashboard = () => {
       setToken(token_t)
       console.log(token_t)
 
-      getQueueList(token_t).then((data) => {
-        setQueueList(data)
-      }) .catch((e) => {
+      getQueueList(token_t)
+        .then((data) => {
+          setQueueList(data)
+        })
+        .catch((e) => {
           // console.log(e)
           console.log('autologout')
           setToken()
           adminLogout()
         })
     }, 2000)
-    
   }, [])
 
   // function handleInputChange(e) {
