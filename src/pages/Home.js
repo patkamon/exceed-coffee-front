@@ -6,7 +6,6 @@ import { checkCurrentPPL, checkCurrentQueue } from '../service/queue'
 import './style/Home.css'
 import './style/Nav.css'
 
-
 const Home = () => {
   const [seat, setSeat] = useState({})
   const [queueDetail, setQueueDetail] = useState({})
@@ -41,23 +40,25 @@ const Home = () => {
       }
     }, 60000)
   }, [])
+  let avaiSeat = (pplDetail.all_sit - pplDetail.now_sit) / pplDetail.all_sit
+  if (avaiSeat < 0) {
+    avaiSeat = 0
+  }
 
   return (
-    <div className='home'>
-    <Nav></Nav>
-        
-    
-      
-      <div className='container'>
-        <h1>Starbook Shop</h1><br/>
+    <div className="home">
+      <Nav></Nav>
+
+      <div className="container">
+        <h1>Starbook Shop</h1>
+        <br />
 
         {/* {seat.current}/{seat.limit}<br/>
         39/40<br/>  */}
 
         <p>
           {' '}
-          available seats: {pplDetail.all_sit - pplDetail.now_sit}/
-          {pplDetail.all_sit}
+          available seats: {avaiSeat}
           <br />
           current queue: {queueDetail.now_queue}
           <br />
@@ -68,7 +69,7 @@ const Home = () => {
 
         <div className="button">
           <a href="/form" className="cta">
-            <span>Click me</span>
+            <span>Booking</span>
             <svg width="13px" height="10px" viewBox="0 0 13 10">
               <path d="M1,5 L11,5"></path>
               <polyline points="8 1 12 5 8 9"></polyline>
@@ -76,10 +77,6 @@ const Home = () => {
           </a>
         </div>
       </div>
-
-
-      
-
     </div>
   )
 }
