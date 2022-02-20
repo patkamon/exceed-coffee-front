@@ -1,0 +1,260 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  /* box-sizing: border-box; */
+}
+
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+
+.modal-content > p {
+  text-align: center;
+}
+
+.warn1 {
+  font-size: 24px;
+}
+
+.warn2 {
+  padding-top: 10px;
+  color: red;
+  font-size: 18px;
+}
+
+.close-btn {
+  color: #aaaaaa;
+  float: right;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: red;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.check-btn {
+  margin-top: 10px;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.check-btn:hover,
+.check-btn:focus {
+  color: green;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.container {
+  margin-top: 15%;
+  margin-left: 12%;
+  width: 600px;
+  height: 800px;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #925338;
+  font-size: 500%;
+  /* font-family: "Nunito Sans", sans-serif; */
+  text-shadow: 4px 4px #997966;
+  letter-spacing: 8px;
+  text-align: left;
+  line-height: 100px;
+}
+
+.wall {
+  margin: 15px auto 10px auto;
+  width: 500px;
+  height: 2px;
+  margin-left: 0;
+  background-color: #925338;
+}
+
+.grid-container > input {
+  background-color: #005d32;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  display: inline-block;
+  float: left;
+  margin-top: 10px;
+  height: 50px;
+}
+
+/* here */
+.customer-name {
+  width: 80%;
+}
+.phone-number {
+  width: 60%;
+}
+
+form .num-seat {
+  background-color: #005d32;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+  font-family: inherit;
+  font-size: inherit;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  float: center;
+
+  /* here */
+  width: 18%;
+  margin-left: 1%;
+}
+
+/* .grid-container {
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+  display: grid;
+  grid-template-columns: 30% 30% 20% 20%;
+}
+
+.customer-name {
+  margin-top: 10px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+}
+.phone-number {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding: 5px;
+}
+.num-seat {
+  margin-top: 10px;
+  grid-column-start: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 80%;
+} */
+
+input[type="text"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+input[type="tel"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+input[type="number"] {
+  font-size: 30px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+::placeholder {
+  color: white;
+  text-transform: uppercase;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #005d32 inset !important;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.submit-btn {
+  margin-left: 10000px;
+}
+
+.button button {
+  margin-left: -30px;
+  margin-top: 10px;
+  text-decoration: none;
+  color: inherit;
+  border: none;
+  background-color: transparent;
+}
+
+.cta {
+  position: relative;
+  margin: auto;
+  padding: 19px 22px;
+  transition: all 0.2s ease;
+}
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 28px;
+  background: #005d32;
+  width: 56px;
+  height: 56px;
+  transition: all 0.3s ease;
+}
+.cta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 18px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  vertical-align: middle;
+}
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+.cta:hover:before {
+  width: 100%;
+  background: #005d32;
+}
+.cta:hover svg {
+  transform: translateX(0);
+}
+.cta:active {
+  transform: scale(0.96);
+}
