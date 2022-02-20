@@ -14,8 +14,9 @@ import EXCEED18 from '../artifacts/contracts/Token.sol/EXCEED18.json'
 import './style/Order.css'
 
 const { PRIVATE_KEY } = process.env;
-const tokenAddress = "tokenAddress"
-const ownerAddress = "ownerAddress"
+
+const tokenAddress = "0xd2aEf848C402fCc3E04DBa45aae5d372e2728c79"
+const ownerAddress = "0xF0A94EC0F27203C399e17d5533A77e00F9813450"
 
 
 const Order = () => {
@@ -49,9 +50,7 @@ const Order = () => {
       if (typeof window.ethereum !== 'undefined' && total >0 && payMethod==='Pay with XCD(MetaMask)') {
           const provider = new ethers.providers.Web3Provider(window.ethereum);
           const signer = provider.getSigner();
-          console.log(signer)
             const contract = new ethers.Contract(tokenAddress, EXCEED18.abi, signer)
-            console.log(total.toString()+'000000000000000000',ownerAddress)
             const transaction = await contract.transfer(ownerAddress, total.toString()+'000000000000000000');
             await transaction.wait();
             pay = true
@@ -97,10 +96,14 @@ const Order = () => {
       const c = document.getElementById("q-menu3").value
       const cal = (a*300) + (b*280) + (c*500)
       setTotal(cal)
+
+      a? setQty1(a) : setQty1(0)
+      b? setQty2(b) : setQty2(0)
+      c? setQty3(c) : setQty3(0)
       // checkOrder(phone).then(()=>{
       //   navigate('/queue')
       // })
-    },5000)
+    },1000)
   },[])
 
 

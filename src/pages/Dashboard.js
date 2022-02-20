@@ -319,7 +319,7 @@ const Dashboard = () => {
                     <br />
                     {collap2[d.phone]}
                     <br />
-                    {collap3[d.phone]}
+                    {(collap3[d.phone])}
                     <br />
                     {collap4[d.phone]}
                   </p>
