@@ -29,8 +29,9 @@ Most like frontend.    <br>
 
 
 # Docs
-[Frontend docs](https://docs.google.com/document/d/1N7qfyraybO7EFEPZ4hQ_qXNdyJaaG_T7U6_w9dU-7b8/edit?usp=sharing)     
-[Backend docs](https://docs.google.com/document/d/146XWPoz3jl57ATAMcc_ddmStS_sBD1tXrtdBJcJq-bo/edit)
+[Project](https://docs.google.com/document/d/1zV62lizyZIMa9MsybvJokREgHQAStKSphl-vzW1PZZA/edit)      
+[Frontend](https://docs.google.com/document/d/1N7qfyraybO7EFEPZ4hQ_qXNdyJaaG_T7U6_w9dU-7b8/edit?usp=sharing)     
+[Backend](https://docs.google.com/document/d/146XWPoz3jl57ATAMcc_ddmStS_sBD1tXrtdBJcJq-bo/edit)
 
 
 
