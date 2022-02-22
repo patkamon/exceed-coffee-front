@@ -7,9 +7,9 @@ Duration of this project is 1 week (13-20 Feb 2022).
   - Customer can queue by fill data in /form
   - Customer can see there queue detail in /queue
   - Customer can order and pay with metamask (extra feature) in /order
-  - Admin can order login to dashboard in /login
+  - Admin can login to dashboard in /login
   - Admin can check every queues in /dashboard
-  - Admin can manipulate queue in dashboard by pressing cross button to delete and press on it to see more information about queue (ex. phone number, queue number, order status, pay status)
+  - Admin can manipulate queue in dashboard by pressing cross button to delete and press on it to see more information about queue (ex. phone number, queue number, order status, pay status) and can clear all queue, logout and can also queues by him/herself.
 
 
 # Running EXCEED18 COFFEE
