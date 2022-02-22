@@ -3,6 +3,8 @@
 This project using React.js to managing frontend and axios for using data from backend (FastApi).
 Duration of this project is 1 week (13-20 Feb 2022).
 
+
+
 # Feature 
   - Customer can queue by fill data in /form
   - Customer can see there queue detail in /queue
@@ -20,6 +22,10 @@ Duration of this project is 1 week (13-20 Feb 2022).
 |-----------|-------------|
 | pat    | Exceed18!   |
 
+# Award
+Most like frontend.    <br>
+
+<img width="480" alt="P'Belle CPE33 Today at 245 AM" src="https://user-images.githubusercontent.com/22401961/155114005-8938d7ba-ccdf-4b09-8acd-7f77d574455e.png">
 
 
 # Docs
